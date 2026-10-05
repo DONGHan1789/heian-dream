@@ -27,8 +27,8 @@
       "sha256": "7bf5764e97cdc638441c05c9004a4b381000ed20e9557d126094d602c46f8da9"
     },
     "game/app.js": {
-      "bytes": 66786,
-      "sha256": "92570d1cefbb3600687be81117b61c0a8e94b5b21b5c89788021963e684cfce7"
+      "bytes": 66675,
+      "sha256": "5a4ca0d571ff65f00e94d5ab0c3065a6ff71576b1ae58d8e5d5f35e5f40edce4"
     },
     "game/engine/state.js": {
       "bytes": 3278,
