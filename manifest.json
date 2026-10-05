@@ -1,0 +1,1866 @@
+{
+  "storyId": "menghu-guichuan",
+  "version": 2,
+  "preview": false,
+  "edition": "formal",
+  "entry": "index.html",
+  "site": "https://donghan1789.github.io/heian-dream/",
+  "files": {
+    "LICENSE": {
+      "bytes": 2183,
+      "sha256": "e498960411f04b2ccbb9d6949c96e9a337914878cac6eae7ba2dacc7cce031bc"
+    },
+    "COPYRIGHT.md": {
+      "bytes": 1112,
+      "sha256": "0c79f959ec87dd98d29f6370e9e833086da0578081addbfc1b7120948808faf5"
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "bytes": 1547,
+      "sha256": "6ffd94b1b9785761ff40ebaebe1379532fa613f9dddf7cf8803478cb5af2efed"
+    },
+    "index.html": {
+      "bytes": 6128,
+      "sha256": "33d91702f7a807d2ba8cef97bb3346a60b4f37afd77110cff505e6909fefbbdd"
+    },
+    "game/style.css": {
+      "bytes": 33506,
+      "sha256": "7bf5764e97cdc638441c05c9004a4b381000ed20e9557d126094d602c46f8da9"
+    },
+    "game/app.js": {
+      "bytes": 66786,
+      "sha256": "92570d1cefbb3600687be81117b61c0a8e94b5b21b5c89788021963e684cfce7"
+    },
+    "game/engine/state.js": {
+      "bytes": 3278,
+      "sha256": "9363006820fc20db01f2fc0b36a98977e0a56eb37222e67a27faf874cf3b767b"
+    },
+    "game/engine/frame-order.js": {
+      "bytes": 4169,
+      "sha256": "dc151ae449f9b48ee9710bc66ff2507b9245cdbfda052981db07ed4020843ca8"
+    },
+    "game/engine/frame-effects.js": {
+      "bytes": 3567,
+      "sha256": "f2ef9331975bab1521e357f9592b6d2312b0ad3012ef8dc7693e0b075b98ba5a"
+    },
+    "game/content/story.js": {
+      "bytes": 559561,
+      "sha256": "0d797ca2dd98272b5484e2e47192d9baa08abde5eb28282a76f63bf06315ffd6"
+    },
+    "game/content/art-cues.js": {
+      "bytes": 184459,
+      "sha256": "5e3e17f7bd18c83830f09c6fa698823440f123e0500a73185e21b05590aebbf4"
+    },
+    "game/content/scene-adjustments.js": {
+      "bytes": 486470,
+      "sha256": "78b09c8b978aa894e2f1c631fbca137674272c751541ca8395e9d47408c42db7"
+    },
+    "game/content/bgm.js": {
+      "bytes": 1655,
+      "sha256": "7a5a36722210eae870a55a9692e650b063a6558038402059a677e33521a3632d"
+    },
+    "game/engine/bgm.js": {
+      "bytes": 6587,
+      "sha256": "85e2fa701745ea3aec561ac373bc017c7388eef5a832d390a8b529cf9c902856"
+    },
+    "game/assets/audio/bgm/beautiful-and-fleeting.mp3": {
+      "bytes": 5366842,
+      "sha256": "c917f4f63482f87494f88a25a716efe4206de47581ca6e486484bed09e4a8588"
+    },
+    "game/assets/audio/bgm/blue-dragon.mp3": {
+      "bytes": 9851860,
+      "sha256": "01da7ac6b6a0bf7b69b462135ac9253db41a05bad4d5f77bb046980a4d9464cd"
+    },
+    "game/assets/audio/bgm/garden-of-sinners.mp3": {
+      "bytes": 5912022,
+      "sha256": "8068db9c4b7df322d375bd0f62836eded5b1aca8434d4988a8b4a5b396bdf425"
+    },
+    "game/assets/audio/bgm/into-the-light-163s.mp3": {
+      "bytes": 3523297,
+      "sha256": "d2958815205975692396b1e68bb2e978e99224e60f1c1ac1e3224af725918abe"
+    },
+    "game/assets/audio/bgm/jun-mo-si-gui.mp3": {
+      "bytes": 4234061,
+      "sha256": "92556d5dfad3cefc652c5d692a4cfe37ea6346fd0a1e33753873a175d2a91bdd"
+    },
+    "game/assets/audio/bgm/sayonara-no-natsu.mp3": {
+      "bytes": 12990729,
+      "sha256": "5b21d0bf55ffd8f13ba74477b7e7d762953991271b5b541d7721ac4190601c3b"
+    },
+    "game/assets/audio/bgm/shionari.mp3": {
+      "bytes": 6354283,
+      "sha256": "6d0839872b506263f41032d2284696b8e14dc8758fcf39a6dc3a7a5d86af502f"
+    },
+    "game/assets/cgs/ame-playful_punch-42b5331c.webp": {
+      "bytes": 379814,
+      "sha256": "8fdf13627732c61fa9dbb64d9ab84a04ed4fd69c101cd3823fe7cd583d228026"
+    },
+    "game/assets/cgs/cg-ame_aerial_downstrike-c615fc6f.webp": {
+      "bytes": 632504,
+      "sha256": "60e08c49c464c4527f8c9aced4ecc14c6ae18d8f32bcf20c25faac7c55751765"
+    },
+    "game/assets/cgs/cg-ame_rooftop_stars-28f3e698.webp": {
+      "bytes": 521126,
+      "sha256": "ce2fa3f4318d5bd7cb490adf566b0aaebb278b3b99e0bc1423959116cf4dbbbc"
+    },
+    "game/assets/cgs/cg-broken_smile_fragment-c4f94b6c.webp": {
+      "bytes": 504990,
+      "sha256": "e6b95f50930deb712fe7c61b92510786b251708bd91ff1f0247b14cde4260b9a"
+    },
+    "game/assets/cgs/cg-dream_gate-ce9c21f5.webp": {
+      "bytes": 650508,
+      "sha256": "39be38d22197cd47640442a865a79eb69c84e91c08f7bc4dd70189c68bed6cea"
+    },
+    "game/assets/cgs/cg-family_cooking-535aa534.webp": {
+      "bytes": 590994,
+      "sha256": "0168b37805c15a70f42fca60fa700d16ed361adc751f30fc9b3eb485d67a6fef"
+    },
+    "game/assets/cgs/cg-family_first_birthday-0763cefd.webp": {
+      "bytes": 512892,
+      "sha256": "5016ac3cc92fb03c1e68c76ebf6e79982d7ccf9a0524874cc42ef52fea0ff1f6"
+    },
+    "game/assets/cgs/cg-family_grown_old-702f1068.webp": {
+      "bytes": 578698,
+      "sha256": "85b2ab4d7d248d62aa50ba4e386719de0c37c041636483f4a78636abd20f9789"
+    },
+    "game/assets/cgs/cg-father_time_shift-486efc02.webp": {
+      "bytes": 576840,
+      "sha256": "8f3e7f6d2747999b7a46b295121fa516bdf0a2b7601905582fac82738b011448"
+    },
+    "game/assets/cgs/cg-handshake-8faaa9d6.webp": {
+      "bytes": 498386,
+      "sha256": "04254a4bbfa13723bde1ca4cce260c75cd735500920c3db5734b315b1dc3b847"
+    },
+    "game/assets/cgs/cg-quake-348eace7.webp": {
+      "bytes": 543200,
+      "sha256": "3b562507ba1c60c6b6387f49e359cab76807a3ea524baf49dca207c009b657c7"
+    },
+    "game/assets/cgs/cg-rollingpin_duel-2592906e.webp": {
+      "bytes": 531474,
+      "sha256": "9f071c502609c94488d3494d62086c5773835b8547139b3deff899114ac0ee73"
+    },
+    "game/assets/cgs/cg-shiguang_court_official-2b891a4d.webp": {
+      "bytes": 477858,
+      "sha256": "f72985599fab8fe7c3b72091ac1e2a8350f07fdeeb01a79e27e1a3227d2c7549"
+    },
+    "game/assets/cgs/cg-shiguang_river_reflection-34e9fa22.webp": {
+      "bytes": 443368,
+      "sha256": "84bf4a55f93241b1bdd95184b44a5320d211789f353ba87337ed67543d35964f"
+    },
+    "game/assets/cgs/cg-shiguang_with_children-e1a3cefb.webp": {
+      "bytes": 615834,
+      "sha256": "4f08feb757b8b74c293c102cc6c836b0f443918fcb02f83f9da3c46a398c626a"
+    },
+    "game/assets/cgs/cg-shilan_jiangling_victory-fa2832a5.webp": {
+      "bytes": 512904,
+      "sha256": "750e2bfc3a445734f21f02eb8bbd01030c65f868ca8fd5071a7c2e97a360fc85"
+    },
+    "game/assets/cgs/cg-shilan_wedding-471733a9.webp": {
+      "bytes": 488398,
+      "sha256": "23a8fa870ec9f2a6d603fca095ccf5d94cc02629523d71799d5921ffde56ca94"
+    },
+    "game/assets/cgs/cg-shitai_cares_father-26d1bf67.webp": {
+      "bytes": 526332,
+      "sha256": "84e00e2468b45b257d89bd096d6b2a8289f7406d20a60e05c77bbcce7d2239b3"
+    },
+    "game/assets/cgs/cg-shitai_wedding-55c56891.webp": {
+      "bytes": 299104,
+      "sha256": "793bee51ee37eeeaf02d4278f3bb548527eea3c0680896bf574bdc579cc9192a"
+    },
+    "game/assets/cgs/cg-sibling_headpat-4e570f9d.webp": {
+      "bytes": 560008,
+      "sha256": "d16fcc338727568144ce363c8065e425d2b0130348ee118d80f51ebe93cfbb23"
+    },
+    "game/assets/cgs/hanbei-carry_corpse-09ebb952.webp": {
+      "bytes": 601838,
+      "sha256": "1b2a997d4c552523ad5731e995a115c71fc190f64045ac290b2f1c041e1fda4b"
+    },
+    "game/assets/cgs/ina-forehead_tease-aa5be9ae.webp": {
+      "bytes": 389268,
+      "sha256": "9b507c8d8534241ddc157cc4e9451532f9302ae575ac0c2c824567d9acb4367a"
+    },
+    "game/assets/cgs/ina-horse_depart-849d9b5b.webp": {
+      "bytes": 579264,
+      "sha256": "7d953835b5ea789930a92736817fbd8c5f7ab843ec13d4e409ac7d661985896b"
+    },
+    "game/assets/cgs/ina-lead_rescued_child-605e008e.webp": {
+      "bytes": 547600,
+      "sha256": "f02a8140ed7715111d6532ba8c4af2421270f320ad47b625a3724911334afc7e"
+    },
+    "game/assets/cgs/ina-present_child-6067cc46.webp": {
+      "bytes": 528866,
+      "sha256": "91715a504d1f131f9ec83f3fe6d36a72c1eeef01d4fac862fbfce0a3f5786a08"
+    },
+    "game/assets/cgs/kiyoshi-grandfather_hug-d90e02f4.webp": {
+      "bytes": 651154,
+      "sha256": "9b7108b9f608fb6871e3409c1ce84da6c2cb7703024047cda310b66a82134b27"
+    },
+    "game/assets/cgs/scene-ame_emerges-bc1ca4c2.webp": {
+      "bytes": 406742,
+      "sha256": "3be3212479b9a40a0539d969145f8b3db3c454961860ea1c0e3a432d50d944b4"
+    },
+    "game/assets/cgs/scene-boat_rescue-0d4814af.webp": {
+      "bytes": 610070,
+      "sha256": "663ba80edb188b9b9a0fec001b76a186766ba039acc1bccef49e3f76c3badb11"
+    },
+    "game/assets/cgs/scene-brother_tap-e9d0f15f.webp": {
+      "bytes": 532254,
+      "sha256": "156e888ba43b76d57c7ab3d88dafab3cdc4797e1774db9927e969d7781515534"
+    },
+    "game/assets/cgs/scene-collar_pledge-cdca6a19.webp": {
+      "bytes": 590990,
+      "sha256": "e604f31f197ab9e493a46e5975e09d05c6022b006f70a2daa69bc93e358e7f76"
+    },
+    "game/assets/cgs/scene-crouch_scout-29278382.webp": {
+      "bytes": 392916,
+      "sha256": "a6be5f643a972605c099df11309d1260b2babacbe06a795e5541c30ea47e2f71"
+    },
+    "game/assets/cgs/scene-crowd_cheer-a23b8eac.webp": {
+      "bytes": 728002,
+      "sha256": "1c476c877f940c8fe1e7defc849b7cc77bad54c07b3d118782ab3f9c5ced3c2a"
+    },
+    "game/assets/cgs/scene-disarm_punch-1a2f4390.webp": {
+      "bytes": 652096,
+      "sha256": "6a5d05f582f72f9f68f1e0cb881cdcfe9975f5461d44b929a95f49089887be00"
+    },
+    "game/assets/cgs/scene-draw_coordinates-4529cade.webp": {
+      "bytes": 694354,
+      "sha256": "e21c641837cbfef1f1445dd541d294dfd478d565792d37e9e6831b0b568df51d"
+    },
+    "game/assets/cgs/scene-dream_family-0dea3bfc.webp": {
+      "bytes": 495292,
+      "sha256": "3679e71f48e11cb3b91d9d6a79eb711f511f3ce58ed762fec060288a41267579"
+    },
+    "game/assets/cgs/scene-family_alarm-82c02348.webp": {
+      "bytes": 454008,
+      "sha256": "07cbbada2bcb3507f50d0ef16ceaa5972557fbe6149a33957139c1869e2afa61"
+    },
+    "game/assets/cgs/scene-father_pat-7318dd6f.webp": {
+      "bytes": 497844,
+      "sha256": "63aef76400c9aa5afa0f2ae4db9907419431e8df6247bf3bc9fc86f86f33d74c"
+    },
+    "game/assets/cgs/scene-father_training-b94775a0.webp": {
+      "bytes": 537186,
+      "sha256": "a1e24eba25dd91dffafc2f9a6d6fe5098b6a0d130f48b9b3daeb1fcb09390fe4"
+    },
+    "game/assets/cgs/scene-hanbei_breaks_guns-b2a7b67b.webp": {
+      "bytes": 566172,
+      "sha256": "9d963297818b3dffa23d429553a946fe2e0e072a57f38271fe6ff0bd86341830"
+    },
+    "game/assets/cgs/scene-ina_arm_lock-7dee14a9.webp": {
+      "bytes": 481036,
+      "sha256": "265435a071f77c4cc5d70ed0651bf3e62b9e2b77b5aa3f67bdbe9245f833c4a2"
+    },
+    "game/assets/cgs/scene-move_stones-4c0cd9af.webp": {
+      "bytes": 618724,
+      "sha256": "09bbe70577b72d455f8e1cccc1fbd909cacf0579df2c90c8c11afd006c854534"
+    },
+    "game/assets/cgs/scene-nagashino_guns-31309133.webp": {
+      "bytes": 491176,
+      "sha256": "d5847b40e4a7f2107c75ff9d75c9c10cf64f510ead0afa01414d08b0f91e0619"
+    },
+    "game/assets/cgs/scene-pull_rusted_sword-4de9b1d9.webp": {
+      "bytes": 396554,
+      "sha256": "bf1a173d8285080cb3423ad9ea61f66836f7031dc2623f13af7f4974bd1f9111"
+    },
+    "game/assets/cgs/scene-push_back_door-cfcf91cf.webp": {
+      "bytes": 296662,
+      "sha256": "57d8e162b3b9ed5011a7363a769cb38699295f32419069508a5dffe5542ac599"
+    },
+    "game/assets/cgs/scene-regent_court-18dea0b6.webp": {
+      "bytes": 457392,
+      "sha256": "92e0c7f8ca9e11264fc000ab1139e7ee5653c0feec7b1e66f7bcfb71e3280872"
+    },
+    "game/assets/cgs/scene-shonagon_dream_visit-1878e757.webp": {
+      "bytes": 466412,
+      "sha256": "f529efc952a324e798fd02d1c71b5671b553afd3e010677335d341907e2a7a38"
+    },
+    "game/assets/cgs/scene-suwen_pull_door-bf8434c4.webp": {
+      "bytes": 544968,
+      "sha256": "18aa3437f44d4f552f4caff76f09d7846c922599dd79650d8bf1ac9acaf7c7ea"
+    },
+    "game/assets/cgs/scene-tackle_take-58716888.webp": {
+      "bytes": 521382,
+      "sha256": "0ff0414aff25ffce6c9d3c2ab71c2db2881b57371f5f2e219ee031694c85c838"
+    },
+    "game/assets/cgs/scene-two_hanbei-a019b026.webp": {
+      "bytes": 402578,
+      "sha256": "8bef2e20e2077baf2c241ea9c2c88a4d228c1c6bc3cbb763a110e389b57c98f3"
+    },
+    "game/assets/cgs/shiguang-sibling_embrace-59059fdb.webp": {
+      "bytes": 610748,
+      "sha256": "5e88991537d8283fba880d3dd583211333faa23fffe098914b4723a4c065eb01"
+    },
+    "game/assets/cgs/shitai-brother_comfort-67bfa383.webp": {
+      "bytes": 559012,
+      "sha256": "65d4edeaf51ede74ae3284ebf596c2ec38cb2ac2447a7340e4b867b580daa553"
+    },
+    "game/assets/cgs/tachibana-corpse_rift-8705c1bc.webp": {
+      "bytes": 535198,
+      "sha256": "16e52c02a6561779fe82b1876d4821357135ac7adaacc99a08d67a9da72b09b4"
+    },
+    "game/assets/cgs/tachibana-dead_arrow-45562e54.webp": {
+      "bytes": 618506,
+      "sha256": "117732d6278485f4017bfaa2b7d8fee6eb6949f79b02e9d251101f03d3081b4c"
+    },
+    "game/assets/cgs/take-collar_grab-ab913670.webp": {
+      "bytes": 577884,
+      "sha256": "84e52f577d8011d0aefd3ba112f981da4c0c7b370f7445bdff1680a544e5375a"
+    },
+    "game/assets/cgs/take-encourage_child-3e0b9a55.webp": {
+      "bytes": 444566,
+      "sha256": "2e8978c8f45de0354ee53c48398466bba3ea39cb546d11408794b492fb6aae2b"
+    },
+    "game/assets/cgs/take-punch_tree-cce61922.webp": {
+      "bytes": 617960,
+      "sha256": "a7ec8f17015492fb6fb330cc40e7d6d3611a192202be9c0de7615a701c711a7b"
+    },
+    "game/assets/cgs/zhanghe-mounted_arrival-a1ca1f61.webp": {
+      "bytes": 545964,
+      "sha256": "162500732e21c6b123c93e2e4a39028f7b6c8cb8dde7fe7cc6fc0e0b3eacfae9"
+    },
+    "game/assets/sprites/story/afeng-fear-918de0a3.webp": {
+      "bytes": 476720,
+      "sha256": "2d55c768f5563a44841e6d04f8355ae10b345807ddf5f9d8d3eda1148f8bbafc"
+    },
+    "game/assets/sprites/story/afeng-fear_crouch-bbeff877.webp": {
+      "bytes": 516000,
+      "sha256": "78dfa765fe17bccd4571169a4c5cb6e9099756743451ed02e5602b862809eea0"
+    },
+    "game/assets/sprites/story/afeng-panic_run-ba54572d.webp": {
+      "bytes": 529720,
+      "sha256": "4198929574082b028ae4117c1a9eef8abcf8c722ec1304095fc64cade1ab4460"
+    },
+    "game/assets/sprites/story/afeng-scratch_dream-492bdaa5.webp": {
+      "bytes": 336010,
+      "sha256": "bbfa58f656fc374bf0d62cfbc8650dd63e1c64b638dff630b6a8d43850cf2f8e"
+    },
+    "game/assets/sprites/story/ame-after_fight-84c4e45a.webp": {
+      "bytes": 299234,
+      "sha256": "e43f61e626321c1023f8432d6f96a4f2ffd35b446a516f38a43da5b25586b789"
+    },
+    "game/assets/sprites/story/ame-backoff-ce10d747.webp": {
+      "bytes": 314752,
+      "sha256": "c9f4bacc1311df05edc6c66d46561d3490b8e7d8526fe00191428dbdb5badd18"
+    },
+    "game/assets/sprites/story/ame-clean_blade-77c4919e.webp": {
+      "bytes": 413098,
+      "sha256": "43eafa92d1048fda2bc9f73d7ad2610bf7cd373362a687d6ffe093dffca5041d"
+    },
+    "game/assets/sprites/story/ame-count_threat-b729d6bb.webp": {
+      "bytes": 371856,
+      "sha256": "4f291285a4345b54b417c2d44261e8032440234f5af3b933ca2f045ee0e5d22c"
+    },
+    "game/assets/sprites/story/ame-demand_release-a8a94d43.webp": {
+      "bytes": 373104,
+      "sha256": "770d494304be29b148247dd975669e526272bca9581c4dabde118d90b58ba2bf"
+    },
+    "game/assets/sprites/story/ame-depart_wave-7df7c264.webp": {
+      "bytes": 365362,
+      "sha256": "9537a59f350bbab6f855f9e134139695c9dadbbc0fe852b884f8ee031fe92daf"
+    },
+    "game/assets/sprites/story/ame-dizzy-6c8a7958.webp": {
+      "bytes": 318394,
+      "sha256": "f331a8e7728429d74016ac52b4d46a0f8ed81f3ff1fb1bfe6129e54e256017fb"
+    },
+    "game/assets/sprites/story/ame-father_stare-b448c730.webp": {
+      "bytes": 293146,
+      "sha256": "c7ae654655ca070f382978139cbfd4a0e475bae66a33d48417e4b0a0a3aaacea"
+    },
+    "game/assets/sprites/story/ame-fight-306fe7cc.webp": {
+      "bytes": 338906,
+      "sha256": "6946d9e87f07a1349557fda18613115aab21e0a8e56f10ff47f13872af18f700"
+    },
+    "game/assets/sprites/story/ame-flee_room-611b5f8d.webp": {
+      "bytes": 420722,
+      "sha256": "e7087977865b3f1b9ea0aa40e13e8ad8e8c30fe87a7c0504421298fe297653c1"
+    },
+    "game/assets/sprites/story/ame-guard_ina-df11e698.webp": {
+      "bytes": 380130,
+      "sha256": "9347f8e10c3e38ce79bef70dc5b8fdfe43e96be7f09234d3f18323e99521898b"
+    },
+    "game/assets/sprites/story/ame-guard_unknown-580bf520.webp": {
+      "bytes": 374668,
+      "sha256": "e6b33c2d731efbb65dec4a3f354e367ce87f46dfb616014d173c53f009026f15"
+    },
+    "game/assets/sprites/story/ame-irritated_draw-4e0a274b.webp": {
+      "bytes": 385746,
+      "sha256": "8055e5d46e5ec9b9e86e98372487be961c13e7fe7efe4fdd1e0b83fc5a7916e5"
+    },
+    "game/assets/sprites/story/ame-leisure_stretch-69d90aac.webp": {
+      "bytes": 386886,
+      "sha256": "9b6f04a154d8812b41f5c91112605a45613f8946f5a20805a9e572f5e5fd3cf7"
+    },
+    "game/assets/sprites/story/ame-map_tease-9197c41f.webp": {
+      "bytes": 335072,
+      "sha256": "18d33c85a2ebd2e67b09376a173fc585973bdba93c65f5ed648d4e9611173c1c"
+    },
+    "game/assets/sprites/story/ame-mirror_counter-5ee7c52c.webp": {
+      "bytes": 360676,
+      "sha256": "3f6f9073cd4f5f489477aa0e9826667abb4243fe9cbfea24a4dce15bbc1fe9e4"
+    },
+    "game/assets/sprites/story/ame-mirror_mischief-7d043f6e.webp": {
+      "bytes": 380352,
+      "sha256": "b1cf72a575dd2ea83aebfe82f87913bfdcc152cd6613f1fadfd2df7485eb9283"
+    },
+    "game/assets/sprites/story/ame-night_stroll-bc31a27b.webp": {
+      "bytes": 299256,
+      "sha256": "abe9a2f85bfa7665086e7cee20e69c7fbe6c6a41b0baad9fec8a6f895a95d592"
+    },
+    "game/assets/sprites/story/ame-oborozuki-9b886312.webp": {
+      "bytes": 448170,
+      "sha256": "735d763434fe73d4daeec8a4f8784d7685de1a755a25a9411c0588fba9074781"
+    },
+    "game/assets/sprites/story/ame-offer_sword-f101aca4.webp": {
+      "bytes": 348090,
+      "sha256": "21ca99bcafee653550bbc86aeb7aa12c03863190d2abf4dc888291b6362ccdf4"
+    },
+    "game/assets/sprites/story/ame-recognize_ina-b3cf9c31.webp": {
+      "bytes": 271342,
+      "sha256": "aa13580d8041e5a642a39dc6b44354d09d30212a498c0350dd580bde2904cff7"
+    },
+    "game/assets/sprites/story/ame-rooftop_grass-c8c237e9.webp": {
+      "bytes": 324956,
+      "sha256": "3ce28d200f33ed9b18699ec4e9ef7283c4dc0c28394bec47e8319f171db7c966"
+    },
+    "game/assets/sprites/story/ame-slash_skull-c2cdfb0e.webp": {
+      "bytes": 566148,
+      "sha256": "70a43611872fa0bb6948e6a0ff6288e2b1319c61fc3855ce3da4ad35d77f33e1"
+    },
+    "game/assets/sprites/story/ame-slope_rush-5e6384d4.webp": {
+      "bytes": 473776,
+      "sha256": "7d6317f6ab19f3a21bceaa7a1d685632717c68ebc1d74adad8c3960186c1f98d"
+    },
+    "game/assets/sprites/story/ame-stretch_rest-5a0ee14f.webp": {
+      "bytes": 314162,
+      "sha256": "5be3941d6025450bb8185fdc8153c40a06291f9fbe8c811f8b022068a5231d4d"
+    },
+    "game/assets/sprites/story/ame-taunt-c611f101.webp": {
+      "bytes": 374558,
+      "sha256": "d91c115d81cc45361b99e63977bdad8ca8a5ef101217420f8de68e075848eb4d"
+    },
+    "game/assets/sprites/story/ame-teary-9a42f6fe.webp": {
+      "bytes": 277170,
+      "sha256": "52f45745fddb3a73695909be17e34f0ef3a54781ab8c124d4d3377ccd0249370"
+    },
+    "game/assets/sprites/story/ame-toss_mirror-c926c833.webp": {
+      "bytes": 400562,
+      "sha256": "034945047ec3c1dfce0607ad5e38e3e7253d85e132983099ffead8f7dc82d37e"
+    },
+    "game/assets/sprites/story/ame-watch_cave-4e7a1bd9.webp": {
+      "bytes": 376908,
+      "sha256": "3307cd5357b4f2d7aee6b190f2833270b71c11c10a91c92675d9706b50e42413"
+    },
+    "game/assets/sprites/story/ame-wipe_tears-54f344f5.webp": {
+      "bytes": 293576,
+      "sha256": "c4d1c399934f6c2be471c9689900bdf75d5b6a4326f4b7161e92490e18374dab"
+    },
+    "game/assets/sprites/story/boatman-beg_fare-58764876.webp": {
+      "bytes": 604458,
+      "sha256": "d33b3236bbc70ca745279f1c51c988cd3523792d525b34b84f78e5d9f528e223"
+    },
+    "game/assets/sprites/story/boatman-notice_young-e89a9dd1.webp": {
+      "bytes": 599520,
+      "sha256": "1208c7c3a79841a1b5381c4a4a3c21bc85e0892fe988422722a4ccc33839ca54"
+    },
+    "game/assets/sprites/story/deyi-angry_left_jar-dcd9fe01.webp": {
+      "bytes": 481618,
+      "sha256": "51cae430aa78a23c6bf52f7f3666efc7f9a41d051f714577d7a3cddc0cc95030"
+    },
+    "game/assets/sprites/story/deyi-freed_fear-bee3ad13.webp": {
+      "bytes": 316828,
+      "sha256": "7d13080f45026e4233bdfeb226f15cc3cd595fdf4d75d777a996f4ac556afb99"
+    },
+    "game/assets/sprites/story/deyi-held_afraid-0b50ed15.webp": {
+      "bytes": 542822,
+      "sha256": "88443579124a9380d09655226edb685af11ca96dfb92188ec06b710a4c562c2c"
+    },
+    "game/assets/sprites/story/deyi-kneel_thanks-35a527c7.webp": {
+      "bytes": 366808,
+      "sha256": "3854f6723bc5645c3dcb4cced79e8e4f892192a5648145d0a128a9694c901bdc"
+    },
+    "game/assets/sprites/story/deyi-regret_cry-8be20b84.webp": {
+      "bytes": 334940,
+      "sha256": "5fbbddc786c56df23fa4d0a2d9b4b1cba59aa7e2c0b0b2ce4b990b5ea14644d0"
+    },
+    "game/assets/sprites/story/donglian-host-186c2413.webp": {
+      "bytes": 293958,
+      "sha256": "a592c7aa7790a009bd36a253e98a5e922809a06e8e0f29620fe0f25b1088f3a1"
+    },
+    "game/assets/sprites/story/donglian-maternal_soft_smile-83876399.webp": {
+      "bytes": 357446,
+      "sha256": "a487938b2560b880d54b059c7ec4b9610632e2ef843a5b7cb3fddbb1a4ff3eb1"
+    },
+    "game/assets/sprites/story/donglian-mock_displeased-bad74494.webp": {
+      "bytes": 312274,
+      "sha256": "3a39a6b61dd3639e119c7c7d70b377c479e300bad757d33778e73eaf8add725f"
+    },
+    "game/assets/sprites/story/donglian-tea_smile-d4a32e32.webp": {
+      "bytes": 409352,
+      "sha256": "770b16878ef875ee990284a6f9d7a55e1a37584a28cee5519b6191b9e565c21e"
+    },
+    "game/assets/sprites/story/donglian-tea_surprise-a8849793.webp": {
+      "bytes": 399264,
+      "sha256": "6561910d08203ccd408d7937d99e2837c7db90ee977ce2b0cd908b837d70eb35"
+    },
+    "game/assets/sprites/story/fengji-hope_candy-5672fde2.webp": {
+      "bytes": 383376,
+      "sha256": "6ef4d7e448c355b47086652502af2a57458bb09a124517d1b0ecf0e1f969268c"
+    },
+    "game/assets/sprites/story/fengji-recognize_grandson-0a6537f8.webp": {
+      "bytes": 341432,
+      "sha256": "5de259facaa1988d6cd0e80c417da15c1fb9f011b46cbbc64031af8511800f81"
+    },
+    "game/assets/sprites/story/fengji-tears_joy-c1308c97.webp": {
+      "bytes": 341086,
+      "sha256": "fc6b4d88341753c3c8b59e44b529800093f47c441b89be6e1ac9c837a587dd83"
+    },
+    "game/assets/sprites/story/fushimi-care-95a86d23.webp": {
+      "bytes": 392418,
+      "sha256": "f059cd1a9b03920240288d6e18373d7b7ad2a0a493e4c259a247e52b97907600"
+    },
+    "game/assets/sprites/story/guide-charge_hand-fa67844c.webp": {
+      "bytes": 506788,
+      "sha256": "25ee5acc6af81574208c5df3205624007866e0e2b98ffe59b680cd67045cc2ca"
+    },
+    "game/assets/sprites/story/guide-knowing_smile-76643d6e.webp": {
+      "bytes": 421158,
+      "sha256": "b68a6af20e5d780730db6b9fe055026244b53a3b6e8378f70268c319d0862557"
+    },
+    "game/assets/sprites/story/guide-lead-0d630813.webp": {
+      "bytes": 520612,
+      "sha256": "7e1cba7635bdab6c2aaf25add44cebb2a1c22cc4219d474ac946c5f125a9bdda"
+    },
+    "game/assets/sprites/story/guide-mild_surprise-8522f990.webp": {
+      "bytes": 417530,
+      "sha256": "38e8a7ed1b01ac318f31fd80c10dd25e479b80c1c225fc8cd2df4d615884ff9a"
+    },
+    "game/assets/sprites/story/guide-step_aside-3887789f.webp": {
+      "bytes": 530304,
+      "sha256": "f9c6c97eab71c05b5df55066504b2ad45ea71901ada3f278af6e50b0a95008ea"
+    },
+    "game/assets/sprites/story/hanbei-bow-43d8f2c9.webp": {
+      "bytes": 370706,
+      "sha256": "fadbbbb492172c58fd50f3de68b793349bc7d8bcadc69609f83187e8d6525ebf"
+    },
+    "game/assets/sprites/story/hanbei-compassion_side-8ba11e85.webp": {
+      "bytes": 405114,
+      "sha256": "2e43d73b025a0d5a22557f091622a6cb6216e91b13ae1d32db7c55f9203e3a33"
+    },
+    "game/assets/sprites/story/hanbei-confused-7d1b691b.webp": {
+      "bytes": 409636,
+      "sha256": "64c84c06ee658a9db3738914ef901b59ea31e2a5871c1f0d827a7716348eb616"
+    },
+    "game/assets/sprites/story/hanbei-daimyo_riding-08f8724e.webp": {
+      "bytes": 655006,
+      "sha256": "1935c43f6a696eb1861aebdb323c1cdf8bebbcc4f33a69c50aed1ad4bd4b791a"
+    },
+    "game/assets/sprites/story/hanbei-debate-b5d91eba.webp": {
+      "bytes": 432944,
+      "sha256": "a753469d6659785860b48cb7106f1d4c4be8ed9a0d5c79b6822350e098b72e4f"
+    },
+    "game/assets/sprites/story/hanbei-dream_startled-6d6ff78f.webp": {
+      "bytes": 418094,
+      "sha256": "7c07aeeef4fbc9df7a8a5267ff75dadf098d8ace124929b05e40bc550b867865"
+    },
+    "game/assets/sprites/story/hanbei-drowsy-dbc1f080.webp": {
+      "bytes": 427322,
+      "sha256": "9ac00444beba440f7392fcc4e42a224c6b32d0b22cda0d77b6125c1634403b84"
+    },
+    "game/assets/sprites/story/hanbei-gentle_smile-cd2befe2.webp": {
+      "bytes": 373434,
+      "sha256": "b39e993ac606f81f25d4841bd52012a2cdca47ff1d3f9c8ca85e2cf0dba4649b"
+    },
+    "game/assets/sprites/story/hanbei-hesitant-d7e893d3.webp": {
+      "bytes": 440172,
+      "sha256": "1dcf92731625d6a8661ec750f7f70a83a8afe25c53aa2c82c6464b741794353f"
+    },
+    "game/assets/sprites/story/hanbei-knock-eef364c7.webp": {
+      "bytes": 421206,
+      "sha256": "6e55a1d2ecf893de6fcf46b9560ec6e412145d14f35f298aec691f0e1729701d"
+    },
+    "game/assets/sprites/story/hanbei-leisure_stretch-878af59a.webp": {
+      "bytes": 522740,
+      "sha256": "f604b7d5343bdbb5ef8660c862321606cb300ade876e3877fc12f279069fe4ac"
+    },
+    "game/assets/sprites/story/hanbei-map_study-91cd081a.webp": {
+      "bytes": 500712,
+      "sha256": "57a3cfa9b36109373091476760ca24244906641b692e9cdae170ef8e91c322e6"
+    },
+    "game/assets/sprites/story/hanbei-meditate-b28165f7.webp": {
+      "bytes": 513534,
+      "sha256": "e42b4b9164833a330438a4d17b98d1859625c82969a2f6d55dbd3c7ddb4df186"
+    },
+    "game/assets/sprites/story/hanbei-mock_despondent-0ae5f50e.webp": {
+      "bytes": 399226,
+      "sha256": "3cbe7e8cb9df3770be7cf1f6fed9d38e1967d74a4479cb95205c4bf47abd7ab0"
+    },
+    "game/assets/sprites/story/hanbei-nightmare-8785f8db.webp": {
+      "bytes": 395798,
+      "sha256": "856581a24aed22d168ecfdb058a3fb8c2339351b93f95ba49784ccfba3e0da4d"
+    },
+    "game/assets/sprites/story/hanbei-old-6476418c.webp": {
+      "bytes": 465274,
+      "sha256": "bcd6b252ff88fc55c40c99ccee3396a1afe07922fde5a3d7b26e55ca4708e14f"
+    },
+    "game/assets/sprites/story/hanbei-old_awake-32a4c03c.webp": {
+      "bytes": 432564,
+      "sha256": "74e1dfbb85f91279e21e374ebc71115fd3c1f8e9eff0cce4da126cbf815824d2"
+    },
+    "game/assets/sprites/story/hanbei-old_bitter_smile-6de95c58.webp": {
+      "bytes": 511876,
+      "sha256": "0cbc5dddc2786a45c436ae5066b563a4683ead6150dc7d8690453bb3a4c39ab1"
+    },
+    "game/assets/sprites/story/hanbei-old_confess-e4918ecf.webp": {
+      "bytes": 458622,
+      "sha256": "a762cd4701aab79bb94a6ae13d7e0fcbd80063ce192911ae75a68ef928ba73df"
+    },
+    "game/assets/sprites/story/hanbei-old_hand-4a1a8d9e.webp": {
+      "bytes": 518122,
+      "sha256": "f71d4c3195eef11004b386221d60e71d3a022cfb872b5aacfb3be712930a20ad"
+    },
+    "game/assets/sprites/story/hanbei-old_meditate-f5109e7a.webp": {
+      "bytes": 488764,
+      "sha256": "0379b075058aace5a7e0ef1080cbc731306928f745d8730530cdee35df038ac7"
+    },
+    "game/assets/sprites/story/hanbei-old_row-5d7df55b.webp": {
+      "bytes": 509416,
+      "sha256": "8ce69bdc7f776d7fe0c29adf0229b779cc576740b113c07af2b3b5d983baaf8c"
+    },
+    "game/assets/sprites/story/hanbei-old_tears-b798e4cb.webp": {
+      "bytes": 471710,
+      "sha256": "32d7a0be268cc1fe9d90971460cf812b89736b8d559da4f4579c35f92fcdee95"
+    },
+    "game/assets/sprites/story/hanbei-old_touch_sword-fd19733a.webp": {
+      "bytes": 479646,
+      "sha256": "e94a6c852b8e2ee5699bcdebd9c4897c4a8ce67819f6dd58031341fb182bc602"
+    },
+    "game/assets/sprites/story/hanbei-old_unadorn-fa972106.webp": {
+      "bytes": 509002,
+      "sha256": "c39b0b065d5b34490c8311a4c36558a4696ce06fb1304a2f7b7f47d9e27b4eb4"
+    },
+    "game/assets/sprites/story/hanbei-regent-7a3a8b0d.webp": {
+      "bytes": 456044,
+      "sha256": "378bef5e7dd039538a74ffc5469dae2c6a7d1adfee00777f6846fc213b531c08"
+    },
+    "game/assets/sprites/story/hanbei-research-f6dc8a1a.webp": {
+      "bytes": 480344,
+      "sha256": "5b82fe4c919d3c0c60aeeb7e2cc30b98b5d6f2f52267b74da843f54cad23b0a4"
+    },
+    "game/assets/sprites/story/hanbei-resolve-0adbffdb.webp": {
+      "bytes": 492700,
+      "sha256": "d9e3cb2686fb251ca0f5ef54f563b6d8dc0ef834121572db7360fc273a744579"
+    },
+    "game/assets/sprites/story/hanbei-resolve-3fd396a1.webp": {
+      "bytes": 410948,
+      "sha256": "049d0fc44badfa2a13916de29b4b9390b02523806d53c7a90c26093c53ec774c"
+    },
+    "game/assets/sprites/story/hanbei-resolve_plain-26f2c78e.webp": {
+      "bytes": 395070,
+      "sha256": "1304835f3c81ebc2bba4ea395f9e9da2277b5042f548ad314eed111bd132879e"
+    },
+    "game/assets/sprites/story/hanbei-scrutinize_arrow-21e6e85e.webp": {
+      "bytes": 402618,
+      "sha256": "901fb666197440b36322f7031a27d53726c12ef446168cba3e31c43afb71008a"
+    },
+    "game/assets/sprites/story/hanbei-sleep_peaceful-70022964.webp": {
+      "bytes": 368942,
+      "sha256": "f562c8acc76f12cabc846b2f99785bbda5772c072c173da5d7bd254f3495e0a2"
+    },
+    "game/assets/sprites/story/hanbei-snow_throw-bf2a55c0.webp": {
+      "bytes": 550954,
+      "sha256": "d26760f5755ff3b7269d7041b9985efa34bb4a470496a60a9195899df06da5b8"
+    },
+    "game/assets/sprites/story/hanbei-weary-9300c642.webp": {
+      "bytes": 410066,
+      "sha256": "324c515d5f8db1286e1c648fec2320fef75b90a781dcfa8d1f62690317751391"
+    },
+    "game/assets/sprites/story/hanbei-window_gaze-e7b68a02.webp": {
+      "bytes": 395972,
+      "sha256": "37ec79104d31d4e2efa1c76d72baf4637fc33b52ede58e43e5baa8ad4a584d3d"
+    },
+    "game/assets/sprites/story/ina-aim-0b96bbbd.webp": {
+      "bytes": 390376,
+      "sha256": "cd0452d3e061744b41ba4bcbdceba02029520637d0d887d26a056a4a12012fdd"
+    },
+    "game/assets/sprites/story/ina-angry_knuckles-f679055b.webp": {
+      "bytes": 350004,
+      "sha256": "23e14d6bf17b2246316a7e2932896e7168b86c78493b29e71fcc875d8b3527df"
+    },
+    "game/assets/sprites/story/ina-annoyed-bb96d186.webp": {
+      "bytes": 327990,
+      "sha256": "e8ab55eeadd9ad043b1afd674530108c570460667bc02dca22fe1aa3ee8c1bf2"
+    },
+    "game/assets/sprites/story/ina-depart-61333326.webp": {
+      "bytes": 381804,
+      "sha256": "2afd56fa376678133275182cdfb3db6337c6cb2067f688b6525224fe7c8e3128"
+    },
+    "game/assets/sprites/story/ina-evade_leap-77460aaf.webp": {
+      "bytes": 517686,
+      "sha256": "3387afe3d9f8d5c79689830aafd5d3c01dd7915f9f1d02b4468003e77eeed30c"
+    },
+    "game/assets/sprites/story/ina-hopeful_surprise-c8a14c34.webp": {
+      "bytes": 323206,
+      "sha256": "31320515a2ab1014449385c3176d589ffec4a9633b6cd73bfe23c526c3d9f2a9"
+    },
+    "game/assets/sprites/story/ina-inspect_sword-dce14639.webp": {
+      "bytes": 418154,
+      "sha256": "3996be3c4c9197305244a7eca19511192373940c4795ca9f3008f3fbab238102"
+    },
+    "game/assets/sprites/story/ina-puzzled-4efd9c3a.webp": {
+      "bytes": 330168,
+      "sha256": "dc83976a725c74dd75b8bbb1a091b7855660fb717e2ef3f7ba06566dc7476527"
+    },
+    "game/assets/sprites/story/ina-quiet_pride-b92bfc20.webp": {
+      "bytes": 358634,
+      "sha256": "bcc5978a3a56675f6ab25390383807c38608d67b028ab729cd73d920f98ee493"
+    },
+    "game/assets/sprites/story/ina-sense_mirror-7cae829e.webp": {
+      "bytes": 335140,
+      "sha256": "fa0dbdc0bc24f21c9f7e29defb6c12c2564149a8a4f3da9228aa3062905ea16b"
+    },
+    "game/assets/sprites/story/ina-shock_bones-b8f6cb3a.webp": {
+      "bytes": 360572,
+      "sha256": "7b7a146bf2e8b03be279c89608ce813e8773d27c7ad0d55db28142c25bfbd4e4"
+    },
+    "game/assets/sprites/story/ina-sorrow-552cadfc.webp": {
+      "bytes": 332068,
+      "sha256": "dea9022dbd1e90b5d3f0b4ff54697c86d3a29e207afddaf6c1385dbaec61fdf0"
+    },
+    "game/assets/sprites/story/ina-startled-e22c5e85.webp": {
+      "bytes": 318894,
+      "sha256": "9d9fe3bb8898aec7d90807719b6320135179e0684cfb4e6f3e6d654607a5f24b"
+    },
+    "game/assets/sprites/story/ina-torch-22ce3dc8.webp": {
+      "bytes": 377882,
+      "sha256": "f6fbea277f03d8989dab08c6d2c5b7135a55fe645abe62c38f758c2c58fd85de"
+    },
+    "game/assets/sprites/story/ina-unlit_torch-8008276b.webp": {
+      "bytes": 344474,
+      "sha256": "26b8fc5cae0404047b1593d9ece80a126b578e266c6f2faa79bbd4994b84263b"
+    },
+    "game/assets/sprites/story/ina-winter_calm-48a5287b.webp": {
+      "bytes": 329836,
+      "sha256": "c0772b8c5c530468080852323e7e5952a20b87da0e9172c24b1c402144f2fced"
+    },
+    "game/assets/sprites/story/ina-winter_chase-9c69b918.webp": {
+      "bytes": 508020,
+      "sha256": "1306a72cf57f1da27d9b11182c7d4abf12a74831a036e028739ac1642686b29c"
+    },
+    "game/assets/sprites/story/ina-winter_compassion_side-318842a2.webp": {
+      "bytes": 345154,
+      "sha256": "82da3e37f10fc43c2ede59d9c65db149f0ecc88d7d606831e16f9317f68cdd14"
+    },
+    "game/assets/sprites/story/ina-winter_laugh-fa92ff8f.webp": {
+      "bytes": 434004,
+      "sha256": "06d44120bdf9c357b8898969405f5d29cfd20e61169516a857105b0ddf182bcb"
+    },
+    "game/assets/sprites/story/ina-winter_stifle_laugh-fe924aec.webp": {
+      "bytes": 341500,
+      "sha256": "9a8b3dbed160362fc3d54d71753384aa8e7c4bdb8339b076931033e0cec1b9e9"
+    },
+    "game/assets/sprites/story/kagetora-bound-27d64014.webp": {
+      "bytes": 402198,
+      "sha256": "ae71ec8c59ccf544dcfbf30b169eec7e50d49d8c2e57f1296b21ac05bde219a3"
+    },
+    "game/assets/sprites/story/kiyoshi-formal_bow-258851e2.webp": {
+      "bytes": 397906,
+      "sha256": "bc0d0f149bcc298c4cafd34b2073a6566142af21244c5f0c30f542d34f0013ae"
+    },
+    "game/assets/sprites/story/kiyoshi-timid_nod-c478eb69.webp": {
+      "bytes": 291376,
+      "sha256": "674d2088d1127d23ad7d90be5bfaa9f2568894fc98fcd520a781744a54ad2271"
+    },
+    "game/assets/sprites/story/kiyoshi-winter_run_grandfather-3c4022f4.webp": {
+      "bytes": 422704,
+      "sha256": "f52fa52c8bd9319e94dd44a04afe91665e5f5d0e907f6c50415a9710624c1954"
+    },
+    "game/assets/sprites/story/kiyoshi-winter_shy-460f5777.webp": {
+      "bytes": 340580,
+      "sha256": "caaeaacbfdb8cdc304feeae9cf0f4d1f1b03587559feb5e20a8373ba338c779e"
+    },
+    "game/assets/sprites/story/nobuhira-deny-81b0f014.webp": {
+      "bytes": 403458,
+      "sha256": "ea9974bca6c3ed12330d13e233d1fde1add02c7257fa08d631920d3b87a3aa7b"
+    },
+    "game/assets/sprites/story/nobuhira-puzzled-019f94b3.webp": {
+      "bytes": 458396,
+      "sha256": "1ca3528afb4acfe30b789b78616afd954319f5c38c1be9a846a5dd2f52a6dc9f"
+    },
+    "game/assets/sprites/story/nobuhira-warm-613596ec.webp": {
+      "bytes": 345724,
+      "sha256": "07e4f96edb7b7a8c7cf5fe00a3240894ff442d5d0983545af10abcd6e0dd3bf4"
+    },
+    "game/assets/sprites/story/nobuhira-wary-cfd9ea93.webp": {
+      "bytes": 405076,
+      "sha256": "78c8c363f20a81da7fcc065efc97a18ac63dc6588eb4d71f7f00260a2810a1f1"
+    },
+    "game/assets/sprites/story/nobunaga-laugh-39fcf008.webp": {
+      "bytes": 406988,
+      "sha256": "04d64f314c7b4bc72e72cb92d512cb92e9651c71be7475ebab00ed5f53667441"
+    },
+    "game/assets/sprites/story/nobunaga-stern-187caeb7.webp": {
+      "bytes": 441744,
+      "sha256": "d417003370738879c4ba13abc1f0c60537dae82fae4f3ff4759d62447ed4cf51"
+    },
+    "game/assets/sprites/story/quansan-announce_reunion-7dc71a52.webp": {
+      "bytes": 326046,
+      "sha256": "6adb77eceebc763f1304ff52c01b4a3b071bec9fb5bd281e5a032e7d40f26a5a"
+    },
+    "game/assets/sprites/story/quansan-breakdown-31818c62.webp": {
+      "bytes": 324182,
+      "sha256": "1e2d956ec52549c132dd75ac47f887ab3333b2886d273db2f77b0cfd568c69d7"
+    },
+    "game/assets/sprites/story/quansan-collapse_cry-cb08617d.webp": {
+      "bytes": 340066,
+      "sha256": "4e68c74fc169b38a839ce5b33f1984fd4ea01becf29a69a4d8ff7cc549d03deb"
+    },
+    "game/assets/sprites/story/quansan-dream_return-93468c7d.webp": {
+      "bytes": 320250,
+      "sha256": "5e2391004419ffb4b4010d35d013b64e4594eeeac77ba067f9b5e18d4294770e"
+    },
+    "game/assets/sprites/story/quansan-hope-646a3c19.webp": {
+      "bytes": 307740,
+      "sha256": "d8207eae28e6d85d69ad4f54ce71ec5cd5fa1ad4bfc96b9010a376a08fd509cc"
+    },
+    "game/assets/sprites/story/quansan-mother_pride-63a886b1.webp": {
+      "bytes": 324982,
+      "sha256": "d63fe3bb8227322afa70b41815ca3a52d151b09f18f5049edf10c006263fcebe"
+    },
+    "game/assets/sprites/story/quansan-moved_tears-6408473e.webp": {
+      "bytes": 301936,
+      "sha256": "f728a0c01097209de5e31c9d64aea7d7657a571c51dcca6e2016d65d034791cc"
+    },
+    "game/assets/sprites/story/shiguang-alert_return-bb0e5fc7.webp": {
+      "bytes": 486728,
+      "sha256": "318424004ef41b521c90ce8f30831d0492889ab283d732e0f607af85ac4de67c"
+    },
+    "game/assets/sprites/story/shiguang-archer-74ae0815.webp": {
+      "bytes": 671612,
+      "sha256": "dc097db60e5ac3852b6ebb27e51d2d820501cca16a6f1641167552bd1950f0c7"
+    },
+    "game/assets/sprites/story/shiguang-arrange_orders-e867b821.webp": {
+      "bytes": 422516,
+      "sha256": "0c36252597d7a68d2a0d8783a9764e6736b255343576161ddca4ee0e38ee99d1"
+    },
+    "game/assets/sprites/story/shiguang-bedding_arrange-efda5083.webp": {
+      "bytes": 518188,
+      "sha256": "15494590e1d1f3e92042d2559271f9f0158642ae505b17d5da3109a63e4ab0c8"
+    },
+    "game/assets/sprites/story/shiguang-choked-940a7b91.webp": {
+      "bytes": 433656,
+      "sha256": "39e7c161b808d13ff7c842bc4087acd4e80ef64fec90ed5d462473cedb9d572f"
+    },
+    "game/assets/sprites/story/shiguang-compose_after_tears-bcc2a964.webp": {
+      "bytes": 483110,
+      "sha256": "33f3b6e45908ef5824297ce15baf6be232bf5f13c14c2052b6f8f22ceae9ec7c"
+    },
+    "game/assets/sprites/story/shiguang-drunk-2e2bc4a7.webp": {
+      "bytes": 564362,
+      "sha256": "deae4a45f4355828e72b73b9be57f778891843683c6aad1a3e22944f2e60daea"
+    },
+    "game/assets/sprites/story/shiguang-family_surprise-21de4cba.webp": {
+      "bytes": 496552,
+      "sha256": "d9b6497c387df830be9767891b7ce5b728c6518f62f0c9ddcb056e1bb39f43c7"
+    },
+    "game/assets/sprites/story/shiguang-flushed_breathless-ca9e9ace.webp": {
+      "bytes": 496662,
+      "sha256": "f2b77daf1a2fea29fb44306e8d48d2648db46a97c311641ee6e240416efaf94e"
+    },
+    "game/assets/sprites/story/shiguang-fold_record-3ef2aad1.webp": {
+      "bytes": 451722,
+      "sha256": "1a73d47066243b7a7da2c6c8439484a985d9494b8c92e5c598af554cfab1a769"
+    },
+    "game/assets/sprites/story/shiguang-grateful_tears-a0696a29.webp": {
+      "bytes": 418722,
+      "sha256": "3643cfcb5a3a1a3cee4be0feecd43ca71961157294b9b56192727a596a02cf20"
+    },
+    "game/assets/sprites/story/shiguang-hungry-d49bb3b9.webp": {
+      "bytes": 457738,
+      "sha256": "3d57dd326164eb8c12f7a34075870fecd5a35c6eda3bf0df1d275451bef66419"
+    },
+    "game/assets/sprites/story/shiguang-inspect_corpse-42367956.webp": {
+      "bytes": 510838,
+      "sha256": "4e5930e38dda7c8a04685813d7595ac9986ad2e87e5d471128c8eee960b205de"
+    },
+    "game/assets/sprites/story/shiguang-look_brother-e35f80e1.webp": {
+      "bytes": 503478,
+      "sha256": "9977d7e726efcf7794438a6e2d6157b3ca28a9b1d5dd22a61f609fbdd048ba2d"
+    },
+    "game/assets/sprites/story/shiguang-memory_confused-5ae76f29.webp": {
+      "bytes": 433280,
+      "sha256": "b5cbbb4f8fa1d0e60d936e3362b2df2885d20dcf27d7724588c983064d3b3e89"
+    },
+    "game/assets/sprites/story/shiguang-mischief-09dc7a5c.webp": {
+      "bytes": 481328,
+      "sha256": "17a46ea8fc9cbd009b039feae24ff387d273cc26d4ce565b4e9eea71482a33c2"
+    },
+    "game/assets/sprites/story/shiguang-pen_still_tears-c6aa1d2e.webp": {
+      "bytes": 502004,
+      "sha256": "5848f9af537332dcbbf5f74578edb8c79948b2039840945444054f3ca496ce20"
+    },
+    "game/assets/sprites/story/shiguang-point_arrow-e153f95a.webp": {
+      "bytes": 508880,
+      "sha256": "34bc78f8fd108ca7f3ecc8612c4c371f5a2073e19825e2e72633b9f5b16821ca"
+    },
+    "game/assets/sprites/story/shiguang-pouch_hug-c2b14ed4.webp": {
+      "bytes": 515536,
+      "sha256": "955a940aed65fce45c6623a8a42568889bcf3ebc6b79f70d3a877c42faaf1292"
+    },
+    "game/assets/sprites/story/shiguang-quiet_homesick-7281d82c.webp": {
+      "bytes": 450552,
+      "sha256": "a75e3bc4a5b358d9ccf99578c34a0321687b2851336e303dc319d80cb97346e9"
+    },
+    "game/assets/sprites/story/shiguang-remembering-66fd8c9b.webp": {
+      "bytes": 548438,
+      "sha256": "3f8cf981664fd368cb0629d6e1d4d4a3af44ed86da9ac7925efa9990616006f5"
+    },
+    "game/assets/sprites/story/shiguang-reunion_surprise-05d50e55.webp": {
+      "bytes": 491326,
+      "sha256": "7595f6b9b91774c35b187feb22444e26276097f3f94e0f281e5bd5fc6470a9a0"
+    },
+    "game/assets/sprites/story/shiguang-river-d37c0f8e.webp": {
+      "bytes": 544492,
+      "sha256": "0b1858883b0b380f1f344e2cc4bb90232e109563b81bc66e045241422604bbfb"
+    },
+    "game/assets/sprites/story/shiguang-rush_sister-350acb51.webp": {
+      "bytes": 593250,
+      "sha256": "1e0b9a192fba3e1ad1889fb252cea602f42a7af75a5af3fd589e348edaed32c4"
+    },
+    "game/assets/sprites/story/shiguang-sad-20922554.webp": {
+      "bytes": 513340,
+      "sha256": "de34f71b6cc3b66eb46ce2a4e9f335f094ae888f557c5c1e9d9e0e401ebc5238"
+    },
+    "game/assets/sprites/story/shiguang-seated_dim-8d1ab804.webp": {
+      "bytes": 456976,
+      "sha256": "d15f21b631f41fc8ee622288d081f739a8bb2a3930c6b158b7be86698e7a1912"
+    },
+    "game/assets/sprites/story/shiguang-seated_dream-9e0c0fb1.webp": {
+      "bytes": 495970,
+      "sha256": "73f514c607a626533cb80a77a19eeae78274c628caffd59c079dd0c93a1e841a"
+    },
+    "game/assets/sprites/story/shiguang-shock-ceaa684d.webp": {
+      "bytes": 489154,
+      "sha256": "4f2b8434e4cb573dab185c120a4d4edc0b06582431ec5cf9e1adada7c810b2aa"
+    },
+    "game/assets/sprites/story/shiguang-smile_sendoff-bd9a110b.webp": {
+      "bytes": 508992,
+      "sha256": "fba77eb8cf9ea0c7cc3a93a9f8d942e2ebb54459fa41428683e0a56b0f022221"
+    },
+    "game/assets/sprites/story/shiguang-snow_escape-5bad47b0.webp": {
+      "bytes": 547282,
+      "sha256": "278ed8e8f1a9f966cf6f12730e6977a8cae97dedbd796da60e044340081d492c"
+    },
+    "game/assets/sprites/story/shiguang-store_record-e1632612.webp": {
+      "bytes": 492030,
+      "sha256": "ea8a6ec6c0b0592fc5fefdeac9574c5ee731c51d643acf75c4f90c212a07b8f3"
+    },
+    "game/assets/sprites/story/shiguang-teary-3d3c6a73.webp": {
+      "bytes": 545224,
+      "sha256": "c62fc38174d7e33d12e5c98c2f2fe06762cbb37903586422233d637ad6a81990"
+    },
+    "game/assets/sprites/story/shiguang-tongue_out-a64c4cd1.webp": {
+      "bytes": 504542,
+      "sha256": "9a22cef93b7fe7463e5715f1188a5d8bc01cee4952df10dc968982d26b20a945"
+    },
+    "game/assets/sprites/story/shiguang-turn_away_grief-4e5a2564.webp": {
+      "bytes": 543406,
+      "sha256": "cc68fa2a10d560d0e2e57736a92099e7538d298b56ff84b83a7ece268f4d75d0"
+    },
+    "game/assets/sprites/story/shiguang-unnerved-78afbb24.webp": {
+      "bytes": 493370,
+      "sha256": "fdc2812f7b8aa9b7adaa1c65c2a904d7aec6b060b4674725be9bdde81a3105c6"
+    },
+    "game/assets/sprites/story/shiguang-waking_dazed-60f8c442.webp": {
+      "bytes": 433764,
+      "sha256": "5d363f2e686b5a52366abced12d6078d3653bb57d53bb754b5d33dcbac8b190b"
+    },
+    "game/assets/sprites/story/shiguang-wine_host-30f38179.webp": {
+      "bytes": 520210,
+      "sha256": "a0914be5ffbf53159776430aa2d54ae8634e8633266d6e1d6928be9e241c9c38"
+    },
+    "game/assets/sprites/story/shiguang-wipe_tears-eeffb9e9.webp": {
+      "bytes": 485700,
+      "sha256": "58e975cf72c53c624b332de8efcd26703f214280a20e6fff3c68b3cd5ef45086"
+    },
+    "game/assets/sprites/story/shiguang-worried-263ea95d.webp": {
+      "bytes": 483466,
+      "sha256": "05f7a98519a1cb8b46a0f267dd39f7ebf0d820c1ff736296c14805ab6ee2ee75"
+    },
+    "game/assets/sprites/story/shiguang-write_record-4f5ebd7c.webp": {
+      "bytes": 479876,
+      "sha256": "dc55dce256deca695511eacfe5507350b0f672de641d50c2fb343de3de75a4b6"
+    },
+    "game/assets/sprites/story/shihe-debate-1de446d3.webp": {
+      "bytes": 358934,
+      "sha256": "c4ff751d3c574667b6e65fbdca197b896268e44c011a586ae6bb3aaaeb334101"
+    },
+    "game/assets/sprites/story/shihe-frail-e6bdd56a.webp": {
+      "bytes": 327214,
+      "sha256": "c1e7ea0495be7205829a52694bbb3731c5bce438d70f472a5e8d5465b87b3346"
+    },
+    "game/assets/sprites/story/shihe-mix_sesame-e9c9d656.webp": {
+      "bytes": 471804,
+      "sha256": "c518bcd84642e912040cbb19ff684a9fd03dcffa7e28e259fc696d7891784fd7"
+    },
+    "game/assets/sprites/story/shihe-old-80597a82.webp": {
+      "bytes": 381596,
+      "sha256": "6cb22d0a80e4054a464df3df0500a100dfaff525fe0f9e8c0207b225af3443f7"
+    },
+    "game/assets/sprites/story/shihe-sudden_aged-f779a5f3.webp": {
+      "bytes": 360468,
+      "sha256": "fd81d16b7404417fd928c7f07aed4d307f936fd5cfebccfc2302086f0236f379"
+    },
+    "game/assets/sprites/story/shihe-warm_laugh-2e20036a.webp": {
+      "bytes": 366692,
+      "sha256": "256f4756249c505b58f02957e0983007f6593fbee309fbca49001dd76f920e83"
+    },
+    "game/assets/sprites/story/shilan-armor-0204ea9f.webp": {
+      "bytes": 601106,
+      "sha256": "d7d000ddf0a497fdf89bb24ee5b4613dca6b0109e33f63c0dedb4691bddd8b41"
+    },
+    "game/assets/sprites/story/shilan-armor_move-fbffe7ce.webp": {
+      "bytes": 662506,
+      "sha256": "0b8b47b9a3063cfa5a703ca3a727f2b2edf05f29de0c97243520296199355adc"
+    },
+    "game/assets/sprites/story/shilan-armor_relief-b25611c7.webp": {
+      "bytes": 504088,
+      "sha256": "8eabe295513c6ed6f2a737710784c677ebfc808ef9b21725b9c7c6cf8c2f7263"
+    },
+    "game/assets/sprites/story/shilan-armor_watch-6447ca3e.webp": {
+      "bytes": 476794,
+      "sha256": "d2a5738d8164eeaf90b2cdc1e987d2ca4fa295eab5d9839d80b5867572c641e7"
+    },
+    "game/assets/sprites/story/shilan-armor_worried-ebbaec11.webp": {
+      "bytes": 473304,
+      "sha256": "9df078e1d4d642a3fabafc654e27da4961865b9f4256aa284e184cc4af70e4b7"
+    },
+    "game/assets/sprites/story/shilan-command-fc28e412.webp": {
+      "bytes": 393434,
+      "sha256": "d68036b14b6113b39ee8782438a700e69639708dc6d333f50710294a821367c6"
+    },
+    "game/assets/sprites/story/shilan-home_alarm-58191b73.webp": {
+      "bytes": 472266,
+      "sha256": "13fceb8a9f81466d2f269be2c2e1a3398af2152bf57724ab40e7be6fbade574d"
+    },
+    "game/assets/sprites/story/shilan-home_debate-fcad987d.webp": {
+      "bytes": 443818,
+      "sha256": "f9fd857fd20a82e80ef362ad488583cf20a19477e1129c63ea2545eea776d0b8"
+    },
+    "game/assets/sprites/story/shilan-home_listen-7448414b.webp": {
+      "bytes": 417474,
+      "sha256": "4a6c8f889c366d448f7a8af0acb4e0016ade97672e7355803a5c6735d00e4267"
+    },
+    "game/assets/sprites/story/shilan-home_smile-f9efec45.webp": {
+      "bytes": 341486,
+      "sha256": "a70e217d150a52b43b09793344df99356ced44b382e510ba11ab72b4fcab2be9"
+    },
+    "game/assets/sprites/story/shilan-inspect_body-dfd3d22e.webp": {
+      "bytes": 594708,
+      "sha256": "4b26e63290fd495f0fada0345baf08ec306e69afee69144a84c93b826e1d8228"
+    },
+    "game/assets/sprites/story/shilan-kitchen_knife-5491a9fe.webp": {
+      "bytes": 397654,
+      "sha256": "1a2afb7da74587c2868d1aff2fbf5ac12964f34a5264fed00e7907d73e0d2470"
+    },
+    "game/assets/sprites/story/shilan-riding-c54103b5.webp": {
+      "bytes": 556626,
+      "sha256": "eda702595ea04ecc886a083e3a03ef2cb32bcaf954a1de88c128cb4d75452132"
+    },
+    "game/assets/sprites/story/shilan-wink-c2b41665.webp": {
+      "bytes": 368324,
+      "sha256": "2001601aeaa77bb5a24e03f1fa4723bdf16a63219b654acb1d4a648dfefc729c"
+    },
+    "game/assets/sprites/story/shimayama-false_pacify-8e55d50b.webp": {
+      "bytes": 308676,
+      "sha256": "dbe8fb325e240f3bf684eabb3f8b822004259d3bee15f1417fae2d0671da387e"
+    },
+    "game/assets/sprites/story/shimayama-fight-2c23c585.webp": {
+      "bytes": 439296,
+      "sha256": "b25e18a66535847a15b86f392fde53cb363a9901f33908f1c3c500436145cec4"
+    },
+    "game/assets/sprites/story/shimayama-fight_angry-a687733c.webp": {
+      "bytes": 521080,
+      "sha256": "e9507c6a4e28c0fa14b3baffeda0ad31ad052b740c4bfdf50c3a70099c450f18"
+    },
+    "game/assets/sprites/story/shimayama-laugh_bend-d493bbbc.webp": {
+      "bytes": 389694,
+      "sha256": "943e824dd7619d08edbaff57551a30bad47ec9e919902c0d8e440f16c24120aa"
+    },
+    "game/assets/sprites/story/shimayama-mocking-727d16c0.webp": {
+      "bytes": 344722,
+      "sha256": "7505f3563702c812122e2fbb68b9225962aaf37b8c978fdac02bec7e4b93b6ed"
+    },
+    "game/assets/sprites/story/shimayama-parry_shock-c5aea12e.webp": {
+      "bytes": 468064,
+      "sha256": "c16df8c13c9e2900fae86fa8e4aceeba4b7467f9d76ff84b13cd8bf89a9c5973"
+    },
+    "game/assets/sprites/story/shimayama-rant-c72782da.webp": {
+      "bytes": 386044,
+      "sha256": "d13f3d98186593ef5e9520f2fe9c823b7d67bfae507565c28446300b2ced2283"
+    },
+    "game/assets/sprites/story/shimayama-scorn-66504477.webp": {
+      "bytes": 313012,
+      "sha256": "73dbfaabe9da03477b60457c7f4ec4d7a5b432fb1fade0f79a1b3292f944c5cd"
+    },
+    "game/assets/sprites/story/shimayama-speechless-cb7c7c0b.webp": {
+      "bytes": 335788,
+      "sha256": "61c5215a872596091f2abe14b51b343327870dbcddc73b81bb86e2bae74ff18e"
+    },
+    "game/assets/sprites/story/shimayama-startled_retreat-8786fa6a.webp": {
+      "bytes": 367800,
+      "sha256": "f0ba6b4939df635441412659d0730207701d6beb0f69e6a473f007596ab65b85"
+    },
+    "game/assets/sprites/story/shimayama-talk-0eacb276.webp": {
+      "bytes": 330958,
+      "sha256": "ae0fffa068b86a78e9db15513bd2b9cf815380a29f5747e4d7829882e68c809e"
+    },
+    "game/assets/sprites/story/shimayama-turn_oldman-a0af5fa9.webp": {
+      "bytes": 375948,
+      "sha256": "89357660ab028636759db9fd2597cf459aed4c723291885fccfdf78a0adf2d3b"
+    },
+    "game/assets/sprites/story/shimayama-unconscious-2c0ebf2d.webp": {
+      "bytes": 556284,
+      "sha256": "4fa9507c9e4af339f7b813caf678622406801d7510c22642f03907aedb2722f7"
+    },
+    "game/assets/sprites/story/shitai-bowl_entry-2961846f.webp": {
+      "bytes": 293894,
+      "sha256": "641be3a43752aae9c54581536458abc3bb606eb825f2eadc918839be67abbfab"
+    },
+    "game/assets/sprites/story/shitai-care-65510c5d.webp": {
+      "bytes": 293894,
+      "sha256": "641be3a43752aae9c54581536458abc3bb606eb825f2eadc918839be67abbfab"
+    },
+    "game/assets/sprites/story/shitai-care-cf7c86a1.webp": {
+      "bytes": 301774,
+      "sha256": "894ddadcc23c63fff4b9dabdd6868b098ddebca4c3346959192777af60815363"
+    },
+    "game/assets/sprites/story/shitai-care_worried-2afc0286.webp": {
+      "bytes": 347654,
+      "sha256": "21a405288611e8ae38e7c9c48cc5c41df9edc26e0684220ffdea2fd413f18800"
+    },
+    "game/assets/sprites/story/shitai-curious-8848b705.webp": {
+      "bytes": 411406,
+      "sha256": "6129c469594bc9b71b5f76f1ba5e2a68a9d2f47f84a37b0a88d845c4327c536f"
+    },
+    "game/assets/sprites/story/shitai-mature-acb664cf.webp": {
+      "bytes": 382750,
+      "sha256": "2b669220e796ef02f21d6fa29e2198461c41e4d092719b131072429400927315"
+    },
+    "game/assets/sprites/story/shitai-mature_archer-cef07384.webp": {
+      "bytes": 447336,
+      "sha256": "ae2b0dc9c964700f9b5d4c85a07ac3067d9406dce0ba3dbd502658352386428a"
+    },
+    "game/assets/sprites/story/shitai-puzzled-ffd37bed.webp": {
+      "bytes": 304990,
+      "sha256": "ea26542ce351a69aea7aa0eee71ac2bf87ebad08b79ad08977bbaaae5a798564"
+    },
+    "game/assets/sprites/story/shitai-welcome-7c59c381.webp": {
+      "bytes": 321910,
+      "sha256": "c1367ae11fb58c4832ee1e73da590cc47334f0ed501a30b6dfbacd73f62632b6"
+    },
+    "game/assets/sprites/story/shonagon-reunion-21549715.webp": {
+      "bytes": 549684,
+      "sha256": "d281756fc1648bccfd51f53d0fa2470c6a037272a69a1dc6053238929e369aea"
+    },
+    "game/assets/sprites/story/shonagon-unhood-f42e6617.webp": {
+      "bytes": 587824,
+      "sha256": "b7bbe28c45796f8a4c16ae2f45056af76f44033d87dd2c2e4068dc98a6f2823f"
+    },
+    "game/assets/sprites/story/suwen-applause-88d121f5.webp": {
+      "bytes": 424240,
+      "sha256": "e8883d64fbd096dae26928792df602df71cc0ff8a0aac3f5823eb187b42ff4f1"
+    },
+    "game/assets/sprites/story/suwen-boat_relief-b46ca0e4.webp": {
+      "bytes": 494750,
+      "sha256": "2650bf65cc1330d7af1be86d8c6eb94941fe1ad0405b9fae86d8ba732c77f1e4"
+    },
+    "game/assets/sprites/story/suwen-cautious_uncertain-f3e3e271.webp": {
+      "bytes": 402052,
+      "sha256": "695dc8de55dd79e7cd6d374a8829096833439a29984a1beefc0f0b643f9162b8"
+    },
+    "game/assets/sprites/story/suwen-coin_lean-f3eee49c.webp": {
+      "bytes": 478092,
+      "sha256": "543529ad9910c534e7c98827637be5162323d790cff21bc81c6d2451bffce532"
+    },
+    "game/assets/sprites/story/suwen-confused-a3c921c3.webp": {
+      "bytes": 382646,
+      "sha256": "41c26ee244e0cd9c88cd939d98f6492dcda2224b1a5e22234df605548990c1ca"
+    },
+    "game/assets/sprites/story/suwen-encourage-3263702c.webp": {
+      "bytes": 489020,
+      "sha256": "137d419479f49e2703dd3eb3d67245dd2ef87162790c1f1783d5bd2e4315ae59"
+    },
+    "game/assets/sprites/story/suwen-hypnosis-085d283d.webp": {
+      "bytes": 417030,
+      "sha256": "4177bd4e1e4f53c3d1dd179121bc3c028d687ca6c748226a4285bc9427658f6d"
+    },
+    "game/assets/sprites/story/suwen-insight-71e3244a.webp": {
+      "bytes": 385492,
+      "sha256": "77b28be0e5a24649dc17daa5807518c4d54f837709e8dd5884f6968f0e7ddddf"
+    },
+    "game/assets/sprites/story/suwen-listen_sad-2a835cdf.webp": {
+      "bytes": 374620,
+      "sha256": "b29a40994b854072a309ef2a405d3cac8da7c902c78c5c918b1c79509a9296b3"
+    },
+    "game/assets/sprites/story/suwen-look_up_observe-3bf6d274.webp": {
+      "bytes": 398254,
+      "sha256": "0f45c5dc005c2a97bf47c2af26bc41d4a4df0953d2f3112967f940363a38d888"
+    },
+    "game/assets/sprites/story/suwen-put_watch_away-f07d5df3.webp": {
+      "bytes": 462358,
+      "sha256": "f13b6119ba1ef7cd794f1f237b9c3439273f1df3983e9589d29f36252a77306a"
+    },
+    "game/assets/sprites/story/suwen-recognize_kagetora-40110bd0.webp": {
+      "bytes": 519058,
+      "sha256": "0daba2a33aa2a725f07a02d497f4bb683609a6120e6fd3866a3cf696e7cb72e2"
+    },
+    "game/assets/sprites/story/suwen-shock_old-dac2bf05.webp": {
+      "bytes": 475330,
+      "sha256": "7ae7a1d74e090f8f9f559483c70e46e78826b731e1f5933e69d8f9719cfd1dfe"
+    },
+    "game/assets/sprites/story/suwen-solemn-fba99081.webp": {
+      "bytes": 481654,
+      "sha256": "39a206d70c2e8c9fcb27a243f4df06a3e0935a70de0c4780f6d204e98fd09dfa"
+    },
+    "game/assets/sprites/story/suwen-startled-8bb3c4ca.webp": {
+      "bytes": 416532,
+      "sha256": "bf363faad9ea307d21c8b4e53e51b5018864f8a8198230e75cdb4a7c142e0b3f"
+    },
+    "game/assets/sprites/story/suwen-tease-da053193.webp": {
+      "bytes": 458516,
+      "sha256": "edfe41b8470369d6f3e34eb1adc7e424ba4b86666ceffcb607ba8edbcf7d677e"
+    },
+    "game/assets/sprites/story/suwen-think-b2b17767.webp": {
+      "bytes": 379282,
+      "sha256": "b70125dfc06dec9b265017f56adb5392dec6666d8080134cfa66cba841936e11"
+    },
+    "game/assets/sprites/story/suwen-uneasy_witness-2a5ffa80.webp": {
+      "bytes": 486790,
+      "sha256": "1af039c7409a096f861543da214751e28024834b1de299b4da0c6422e558e060"
+    },
+    "game/assets/sprites/story/suwen-worried_think-2130f988.webp": {
+      "bytes": 478160,
+      "sha256": "c3976787e4169f84577167731a8b024a073867af440597f29e8b63bed5dde25f"
+    },
+    "game/assets/sprites/story/tachibana-anguish-68b2dc6e.webp": {
+      "bytes": 442164,
+      "sha256": "2a6a2cbaa878703f549b6a8c8e0a1c3838e0db34bef0c5f470a7ec47712b958b"
+    },
+    "game/assets/sprites/story/tachibana-bitter_identity-d836b028.webp": {
+      "bytes": 342420,
+      "sha256": "c2f22c32ef1d15681928c43184641b725a9e818514f774b7b49fef6df31cd5f2"
+    },
+    "game/assets/sprites/story/tachibana-cower_sword-7fcca1df.webp": {
+      "bytes": 540354,
+      "sha256": "f520ae6081806525d25affbae4aed78bb824c9e69fdad2c496fb85d4e6680e31"
+    },
+    "game/assets/sprites/story/tachibana-deceptive_explain-3b859741.webp": {
+      "bytes": 447942,
+      "sha256": "76640c960730dcddd1653c423bd360048bd67857f6214f698f6a8afa15ad2ef5"
+    },
+    "game/assets/sprites/story/tachibana-dry_laugh-fb73cf6c.webp": {
+      "bytes": 348536,
+      "sha256": "91b9ffcb77c358c6d664fc6e4626932f87018ff9538982a39942c8299af24a4e"
+    },
+    "game/assets/sprites/story/tachibana-eager_wife-393cba30.webp": {
+      "bytes": 393044,
+      "sha256": "5e4a01fb8c2374d8ff810eff7655463e395757fed698adec42a10f802f4a6bd5"
+    },
+    "game/assets/sprites/story/tachibana-fear_memory-a44bfea1.webp": {
+      "bytes": 350906,
+      "sha256": "c98ea7647f989f0bfb90c1d38341da4b8a711ca9c1ad51373aaa9ea1095298c2"
+    },
+    "game/assets/sprites/story/tachibana-feigned_headache-003a56e6.webp": {
+      "bytes": 436496,
+      "sha256": "ce1b9cbca2a44362569fe13eecbdc5aef9c868e781647c6ad1cfbdf4654c63cf"
+    },
+    "game/assets/sprites/story/tachibana-greed_revealed-3c46ec89.webp": {
+      "bytes": 397240,
+      "sha256": "6ca2281c1e29d3535fd7fd73db702f115c5051c935817011d854f8814c8bffe6"
+    },
+    "game/assets/sprites/story/tachibana-greedy-fb66f8c7.webp": {
+      "bytes": 404358,
+      "sha256": "1b23409d5da9c8b80f529f409f2b98981a9c90626c3ed98025882f34be42904c"
+    },
+    "game/assets/sprites/story/tachibana-grief_silent-8298eb59.webp": {
+      "bytes": 373992,
+      "sha256": "689237b364842c12396287542ab23a721f5115847d867ae9c4b8ed0dcbd16342"
+    },
+    "game/assets/sprites/story/tachibana-guilt_baku-4168cc5a.webp": {
+      "bytes": 372828,
+      "sha256": "d5ac9e13473a10b27ae6d658174359b0a455e3a8a3cebd1f85f35724665551b0"
+    },
+    "game/assets/sprites/story/tachibana-hollow_box-740979e2.webp": {
+      "bytes": 348296,
+      "sha256": "2dcc0c961965ad8064694a04fc24608557ecb9dcc9058b6453356de1a2d92247"
+    },
+    "game/assets/sprites/story/tachibana-leap_dream-61a54dcc.webp": {
+      "bytes": 598050,
+      "sha256": "fdf4be7b24e4ccac2dbebd4e48d98449d501818aaabab3403b4e5de663befbec"
+    },
+    "game/assets/sprites/story/tachibana-protect_box_dodge-8618a352.webp": {
+      "bytes": 532130,
+      "sha256": "c24367a2cf738fe44087defb32d83d17b35108e504d8dd3f03974a90e0571515"
+    },
+    "game/assets/sprites/story/tachibana-resigned-d7354ce1.webp": {
+      "bytes": 380850,
+      "sha256": "2025b84284aa596e75a950b9e59bf8510c461b273d38dec8b4305148e2048308"
+    },
+    "game/assets/sprites/story/tachibana-revival_excited-dfa8bdb0.webp": {
+      "bytes": 388812,
+      "sha256": "db11ca4b75992c8639fe19b6c1512613a930be11cfc173c056f47f290313ac8d"
+    },
+    "game/assets/sprites/story/tachibana-rust_sword-6bc68ebc.webp": {
+      "bytes": 365254,
+      "sha256": "d5734ebe50e99312a8e9d6268cd185030bc72102e8c3c412040910933bb41c63"
+    },
+    "game/assets/sprites/story/tachibana-stuck_sword-1ba366c8.webp": {
+      "bytes": 521638,
+      "sha256": "b4e3c6cd02a2020ad3df980570041f57ac700322ca650b97b7c7b5fb70b4e265"
+    },
+    "game/assets/sprites/story/tachibana-toothless_claim-cfd5a13f.webp": {
+      "bytes": 384140,
+      "sha256": "27a83c7426f8c478e083158845b435e3dd02463af63ddb75021972e5478892d4"
+    },
+    "game/assets/sprites/story/tachibana-yearning-2a021ada.webp": {
+      "bytes": 330714,
+      "sha256": "1203feb3f04b32f62b4ea9338930872e7983f33ae20c6839fc1c475fc92f5c0c"
+    },
+    "game/assets/sprites/story/tachibana-young_box_hidden-95099aae.webp": {
+      "bytes": 367110,
+      "sha256": "f80b49aa3e4bc3459b10c57eceb089f0ee69aca29116ccbb4ddde63908d13f6a"
+    },
+    "game/assets/sprites/story/tachibana-young_hatted_walk-cf144115.webp": {
+      "bytes": 491060,
+      "sha256": "cb965f520de3646495404cdde1d51be2eb514add1e59081f047066453ec587fd"
+    },
+    "game/assets/sprites/story/tachibana-young_moved-60c6d0e2.webp": {
+      "bytes": 398064,
+      "sha256": "8701fc71a6a8a3250dc255fe9355f7014fe66c5b83ae2ffb14923726edd38a64"
+    },
+    "game/assets/sprites/story/tachibana-young_pay_coins-88b404a6.webp": {
+      "bytes": 414006,
+      "sha256": "652e5e1fe675a7cdd3256c65f4a0d2446bb450a4a78cc183eefa9e1335b399da"
+    },
+    "game/assets/sprites/story/tachibana-young_question-de2ea9de.webp": {
+      "bytes": 367726,
+      "sha256": "f454a0d15b43d6de554ba2e406df9a2a9c1a088f9aa54808baf2dbee98af9b3d"
+    },
+    "game/assets/sprites/story/tachibana-young_remove_hat-b80f808d.webp": {
+      "bytes": 436362,
+      "sha256": "910eb0e8da94d6cf8e577476e1d3019daae210a11f2cc0450ce30a204f316181"
+    },
+    "game/assets/sprites/story/take-decline_seat-9d325ad1.webp": {
+      "bytes": 336210,
+      "sha256": "7da909dc33b7b14136f6552ce132cc14247773017dda9906d160e5f74e1cfd6d"
+    },
+    "game/assets/sprites/story/take-disbelief_cloak-bec5cf0e.webp": {
+      "bytes": 342528,
+      "sha256": "d35ad42a72a1919a906a12e1eb710cf353ed0d8bc61e6002f021229d2ddff8c6"
+    },
+    "game/assets/sprites/story/take-exasperated-0949ee3d.webp": {
+      "bytes": 315436,
+      "sha256": "c9454b9fa30edec415207e8ef97910681254f8f610cb8c7b36e05a7d2f087c4b"
+    },
+    "game/assets/sprites/story/take-friendly_smile-f8079721.webp": {
+      "bytes": 343994,
+      "sha256": "02cad2edb97002cc92c08b1d6d048bacc00f030db40259ced607884a44cbc16a"
+    },
+    "game/assets/sprites/story/take-guard-60dc3a03.webp": {
+      "bytes": 405512,
+      "sha256": "6c24d93ba57949056bbe239aa40d6425199b15b319848c489bee9dda40346722"
+    },
+    "game/assets/sprites/story/take-guard-8d4dfb65.webp": {
+      "bytes": 359260,
+      "sha256": "7527c67faaea95b167c1a42665940c459c90c63d51bbb7b1f502978ea009284e"
+    },
+    "game/assets/sprites/story/take-listen_snow-66683aaa.webp": {
+      "bytes": 363210,
+      "sha256": "139a636e4ef92347c13d48262f1c2e2e2c4a100bf5863c1691f988be09a4ac3c"
+    },
+    "game/assets/sprites/story/take-prepare_reply-f8a7138b.webp": {
+      "bytes": 362148,
+      "sha256": "9a6c34ba88906235bc16df51b4453fbbf58362e515585a23e0cd01c6ed5abc5c"
+    },
+    "game/assets/sprites/story/take-puzzled_surname-80600f2a.webp": {
+      "bytes": 337172,
+      "sha256": "31f85354296562ee4d0e9fd994ecf960a8525a9ae66d056c72594e4713a8aa52"
+    },
+    "game/assets/sprites/story/take-read_letter-5ff0ab74.webp": {
+      "bytes": 397670,
+      "sha256": "629b89ee23db64ba10f7f6324489d558c5a6c3171cae0597f84b1a3391039cc6"
+    },
+    "game/assets/sprites/story/take-read_letter_relief-5b00529f.webp": {
+      "bytes": 320984,
+      "sha256": "778bdb38ad1d8721c717209d716b16e0d8bc18732cdd1b007de65072e914c2fe"
+    },
+    "game/assets/sprites/story/take-read_note-39adbfcc.webp": {
+      "bytes": 380600,
+      "sha256": "7cd9dde9b846317fb2d9fd1da2ffd6793e610d3cdc4c200abd8506382766c707"
+    },
+    "game/assets/sprites/story/take-shake_snow-3c8d349d.webp": {
+      "bytes": 366890,
+      "sha256": "b9d47071ccb1435db3c3d00b7d34c8e3df162c5a389b533251e36604459dc965"
+    },
+    "game/assets/sprites/story/take-shock_betrayed-70096547.webp": {
+      "bytes": 459126,
+      "sha256": "a1a5f765a0029b1332c9ae2dc84c01f16d6775dafc12b0c7edb6baa6b5ffd37e"
+    },
+    "game/assets/sprites/story/take-snow_cloak-d3df8d87.webp": {
+      "bytes": 396748,
+      "sha256": "bd09f35780bac51310c938f4a1d251117914a555029528f42c657887298038f6"
+    },
+    "game/assets/sprites/story/take-split_dream-f1ed2502.webp": {
+      "bytes": 430652,
+      "sha256": "bc00f4ea79a7b26149740a3e463ee89dd018f7b45f8ea04b75b24b920a0f71d1"
+    },
+    "game/assets/sprites/story/take-surprised_cloak-c3a06ed0.webp": {
+      "bytes": 377054,
+      "sha256": "5bae7cc349a94c8e67b892c02c95637acefbc2a950d3e174af56ca5d51710734"
+    },
+    "game/assets/sprites/story/take-sword_doubt-1779f5f7.webp": {
+      "bytes": 387488,
+      "sha256": "0195d9edaa581809b5d054119834ed0e93480eaa9b8632364cf482aeb5377746"
+    },
+    "game/assets/sprites/story/take-sword_drawn-37d6bec6.webp": {
+      "bytes": 445480,
+      "sha256": "0304b07d8de84ebec1dbb1982870de526e544bc8bef19f32124cf939e9e8a69e"
+    },
+    "game/assets/sprites/story/take-sword_throat-18f3e5a7.webp": {
+      "bytes": 435936,
+      "sha256": "9d56a69c98fc00e36b44c10cb8435033f623862a114064a932a79f72e3cd626b"
+    },
+    "game/assets/sprites/story/take-uneasy_appeal-72f61d45.webp": {
+      "bytes": 351772,
+      "sha256": "1c8f9d1b4904364d7f2f6ac3645dc153a51a4ca4a01d0b9c2bcd7bea72e91258"
+    },
+    "game/assets/sprites/story/take-wait_aside-2fc1e171.webp": {
+      "bytes": 385574,
+      "sha256": "fe2f454c9b6b1097d9d4556981abc77bcad2378f2e67eec9916c3ef9891726f9"
+    },
+    "game/assets/sprites/story/take-warm_cloak-0fc174ef.webp": {
+      "bytes": 363056,
+      "sha256": "8aefcf887b641c272091a52ee4d4ff4ec280a93af88def02484b4150bb40c978"
+    },
+    "game/assets/sprites/story/take-winter_accuse-04532c43.webp": {
+      "bytes": 338432,
+      "sha256": "81cbc882f331dc3201a86490230551dd327fbba4697226ce75957324ee8fdc97"
+    },
+    "game/assets/sprites/story/take-winter_calm-5b7720fb.webp": {
+      "bytes": 333860,
+      "sha256": "0c0c98fc68b6e011149b5da1c0b3d738badc74ecaa5783e376cf065e2c04e2b1"
+    },
+    "game/assets/sprites/story/take-winter_chuckle-a7e58cd4.webp": {
+      "bytes": 372040,
+      "sha256": "8cd106b8db26b09f52d74de49477a135e5592123dea8f213675f7fd7ac72f99f"
+    },
+    "game/assets/sprites/story/take-winter_compassion_side-42e793b0.webp": {
+      "bytes": 356474,
+      "sha256": "ca7d870a9e9382e27f2bd5310d6a06bc1b30a734bbcf88ac735b8fef983af754"
+    },
+    "game/assets/sprites/story/take-winter_dilemma-db86f7d9.webp": {
+      "bytes": 329636,
+      "sha256": "74e80a0f3a7ab2f8834d4ab4e587345aad94a7670560e9b960a278eed8bd0474"
+    },
+    "game/assets/sprites/story/take-winter_knock-58062eb2.webp": {
+      "bytes": 365758,
+      "sha256": "bd3dfadc450644d04657ca2d1471d20afeaf74ab8102d98b35853f74a815dee6"
+    },
+    "game/assets/sprites/story/take-winter_relief_exhale-735d8983.webp": {
+      "bytes": 317454,
+      "sha256": "3ca452e3a4d585d3c8acae4bfd4e8e31e2af8c3066960454c43b2fff173d5b09"
+    },
+    "game/assets/sprites/story/take-winter_restore_composure-38e5c08f.webp": {
+      "bytes": 331698,
+      "sha256": "66e4d3282cadbb97f5e49249906136c9fe6efd21aabc63c6a13a9ed720183141"
+    },
+    "game/assets/sprites/story/take-winter_scratch_head-987ac70d.webp": {
+      "bytes": 331194,
+      "sha256": "4f9c52b12b03864530a7a411989a892b0f54c492f690e34ad2f8a8573a3723ce"
+    },
+    "game/assets/sprites/story/take-winter_snow_startled-3488233a.webp": {
+      "bytes": 378100,
+      "sha256": "e0b35387caf9cdf8c1d9b90fed668aaa6039cfccbbbdb28827aedc2825197a7b"
+    },
+    "game/assets/sprites/story/take-winter_snow_throw-ebf96fa6.webp": {
+      "bytes": 382118,
+      "sha256": "f1ebefce7e685286b8a514e9d0648c0efe75e87e1f99f56a44c0a6d46f2caaec"
+    },
+    "game/assets/sprites/story/take-winter_stern-60efdae3.webp": {
+      "bytes": 330674,
+      "sha256": "a1bb2e4695d2ba25e37ca0eac587f51a84a75ac93f8b3afbdf6b5019ca313521"
+    },
+    "game/assets/sprites/story/take-winter_stern_depart-12c590f7.webp": {
+      "bytes": 320006,
+      "sha256": "f7ebc0f565e6d05af59f53e1964d591f5a013c10f5ce77f94bc9ae6e7d8332fc"
+    },
+    "game/assets/sprites/story/yousaburo-charge-49654ea7.webp": {
+      "bytes": 326186,
+      "sha256": "aa790a8c05c7e53d0e5a857c003fcaf70fede1de8dcd879326a7df7dcedff497"
+    },
+    "game/assets/sprites/story/yousaburo-defiant-8ef0798b.webp": {
+      "bytes": 345536,
+      "sha256": "d73c6eee05662432a2effcf8753775c605214eb0f1e0f4799e02a432a4a52cc4"
+    },
+    "game/assets/sprites/story/yousaburo-fear-8a07bd80.webp": {
+      "bytes": 298588,
+      "sha256": "2f58f63da8bc4f6c683a13bd0d337b0ab8736ff845e4e53327c817b01c7d3249"
+    },
+    "game/assets/sprites/story/zhanghe-command-d714b4ed.webp": {
+      "bytes": 536580,
+      "sha256": "b954ddb7be8c770d63cdb1746fffde57ab7fc494ee4bff5b8bf850421b228bc8"
+    },
+    "game/assets/sprites/story/zhanghe-command_move-cbbf9a54.webp": {
+      "bytes": 550162,
+      "sha256": "cd953f985cf75b7fedabd7d23b0f70f804b89c42faa76186ae5c67a2a698f527"
+    },
+    "game/assets/backgrounds/oe-cave-depth-natural-v1.webp": {
+      "bytes": 393076,
+      "sha256": "9bc80772a402711868a0df01570afef7f381aa0ce793040a4a1f069e1ac04f50"
+    },
+    "game/assets/cgs/archery-bullseye-v1.webp": {
+      "bytes": 367270,
+      "sha256": "d4520637378548b511fa641c5043781fbf2a929c8e9dbc81d7d2bb60197aca88"
+    },
+    "game/assets/cgs/baku-gentle-return-pov-v1.webp": {
+      "bytes": 310276,
+      "sha256": "95415995be8495b4fe1780c5fb32e337e411b14228e64e72aae2e9688dc0ed95"
+    },
+    "game/assets/cgs/cave-entrance-closeup-v1.webp": {
+      "bytes": 609054,
+      "sha256": "cdb7cfd20bea1c64ac549ce28d1fccd40f846c664046f6e52a17bdc39a3f9c96"
+    },
+    "game/assets/cgs/dreamlake-tenshu-candle-long-shadow-v1.webp": {
+      "bytes": 303548,
+      "sha256": "69ab15d18884afeaf3b1c5246f3ce64eb91a3a51ea7d459be55ce818ad4aa9e8"
+    },
+    "game/assets/cgs/hanbei-heian-redacted-record-v1.webp": {
+      "bytes": 306786,
+      "sha256": "957e25d512c498e4d6249ca3733a25165aefed212f08777b52f3df624e30e01c"
+    },
+    "game/assets/cgs/heian-omen-bone-bird-v1.webp": {
+      "bytes": 318508,
+      "sha256": "950c20a1262dfd0022489279b58e1128ed3dea223283dc92e0f5b9007f78cef3"
+    },
+    "game/assets/cgs/heian-omen-ink-spring-v1.webp": {
+      "bytes": 343752,
+      "sha256": "3eab316541357ab18907f185306c72ff394dbd761cd416eaf9e5445201ff8486"
+    },
+    "game/assets/cgs/heian-omen-moon-eyes-v1.webp": {
+      "bytes": 337550,
+      "sha256": "55e4168299405693ee2a5eb8203ab77f3ead9760d2c71e711bbc0b07b7d1df88"
+    },
+    "game/assets/cgs/kyoto-spring-starry-night-v1.webp": {
+      "bytes": 603436,
+      "sha256": "4e348e397056b118829e7d467f1ad4d1e377eb0ce5a375ed5ccb6b9d6f255b87"
+    },
+    "game/assets/cgs/oe-cave-rations-and-water-pov-v1.webp": {
+      "bytes": 393834,
+      "sha256": "413f0baffefaf1a58212ff7f80b5df97d2c5e57877f63ea405c3f93f65161244"
+    },
+    "game/assets/cgs/oe-cave-sealed-entrance-pov-v1.webp": {
+      "bytes": 421374,
+      "sha256": "091515448a1b115bd904dfcf848a5ca307fb8c4283fc289185a57c6a4e52c05e"
+    },
+    "game/assets/cgs/shihe-winter-farewell-v1.webp": {
+      "bytes": 497884,
+      "sha256": "ec450594db723597f8db6052d8d88e88c253e6f1d2095fbd010d5cd1285dcba0"
+    },
+    "game/assets/cgs/shonagon-absent-veranda-pov-v1.webp": {
+      "bytes": 299724,
+      "sha256": "7e49fb13f68dce3dfccd901d59606baae6047231f46911c2ac475677104a107e"
+    },
+    "game/assets/cgs/shonagon-apples-home-pov-v1.webp": {
+      "bytes": 340032,
+      "sha256": "4168265e705b500935e75f4f81788f858d5fab064c72541951e4fc937456e866"
+    },
+    "game/assets/cgs/shonagon-autumn-farewell-pov-v1.webp": {
+      "bytes": 414354,
+      "sha256": "2da905bfd4cc9c3e38740436af51db5eb2dedfdbce8bbfc071f1254c31d3748a"
+    },
+    "game/assets/cgs/shonagon-grey-hair-dream-pov-v1.webp": {
+      "bytes": 359836,
+      "sha256": "a40ade38b219968d2235ca63492123fe546b85b71e1b5238ac8ca8c64638a6a4"
+    },
+    "game/assets/cgs/shonagon-tearful-visit-pov-v1.webp": {
+      "bytes": 308172,
+      "sha256": "64af3b15606114d1388304398caa53c79444a54e99fc0fea402e05a5fc9d0f49"
+    },
+    "game/assets/cgs/tachibana-shonagon-sanzu-reunion-v1.webp": {
+      "bytes": 461788,
+      "sha256": "9b10c748578adc27ec9e5d1182571dd123e7fb90cb8f2a4d90829eb426bcbb63"
+    },
+    "game/assets/cgs/tachibana-silver-box-tremor-v1.webp": {
+      "bytes": 287562,
+      "sha256": "44c20084e26d81da8c1d318962e14bfccf0230b6f6c99ed55af6af6bed4f224b"
+    },
+    "game/assets/cgs/take-ame-silk-note-v1.svg": {
+      "bytes": 530186,
+      "sha256": "04741d06d55ab7ff488abb7ddf24ef08f561e78823f3971c8ccfac102dd53df0"
+    },
+    "game/assets/cgs/take-kyoto-overlook-v1.webp": {
+      "bytes": 476776,
+      "sha256": "cb9bb6a35a64b0160c59bdde0758921418098a01155ad849b00b7be7266ae1ce"
+    },
+    "game/assets/cgs/zhanghe-mounted-arrival-night-v2.webp": {
+      "bytes": 389696,
+      "sha256": "2983b738d1e0c608a81e71f1d72cf101b6aae989c5471a9afed15e919e9e019c"
+    },
+    "game/assets/sprites/archive/shiguang-90f4db3a3437.webp": {
+      "bytes": 318760,
+      "sha256": "6118776c9ef06a03791878d0f85f1345302453ae14d1839ca59251ea70d52779"
+    },
+    "game/assets/sprites/story/hanbei-research-clue-v1.webp": {
+      "bytes": 374646,
+      "sha256": "4611593dc229fd409cd40140a8e5b0b171bc0cf151959992665f9dd5b00a7d84"
+    },
+    "game/assets/sprites/story/ina-winter_snow_throw-v1.webp": {
+      "bytes": 1586576,
+      "sha256": "c36172900c4848a0601f86e0c033f4491f90643ee7041950ef396bae99f93287"
+    },
+    "game/assets/sprites/story/shiguang-bite-yuanxiao-v1.webp": {
+      "bytes": 427960,
+      "sha256": "7ca1da22e2318a9d6aa3d9c4baa4355e805676c1cbe4d13da6d65738a2a69288"
+    },
+    "game/assets/sprites/story/shiguang-quiet-homesick-look-up-v1.webp": {
+      "bytes": 414950,
+      "sha256": "885ad89f72a1692954ec3c344b08279321aaff9fe615e8258f5470f1dc52d98f"
+    },
+    "game/assets/sprites/story/shiguang-roll-dough-v1.webp": {
+      "bytes": 481098,
+      "sha256": "1a0963a3e7a9136a4370792c3fea9bf0c1958128c863a9d053b7049e5c82a12b"
+    },
+    "game/assets/sprites/story/shiguang-seated-dim-look-up-v1.webp": {
+      "bytes": 430352,
+      "sha256": "9aec1ab296eb5d47d0707f9f8c22074af41a26595c52024a7485c4a6eca898f2"
+    },
+    "game/assets/sprites/story/shiguang-snow_throw-v1.webp": {
+      "bytes": 1766752,
+      "sha256": "41ac43f2452ca41eb0533c78b9ffb255e868d1cbd90eeb9091fce0b93d928a92"
+    },
+    "game/assets/sprites/story/shihe-pound-sesame-v1.webp": {
+      "bytes": 314166,
+      "sha256": "5b8c3e3f46dfa5640aac063e4be015528885ea960344ff9fbf043a0fdf635893"
+    },
+    "game/assets/sprites/story/shilan-raised-brow-v1.webp": {
+      "bytes": 314580,
+      "sha256": "d6188e9746d5d5252a254562747e2c4ecd774c7426a242a7ee3c79695c242667"
+    },
+    "game/assets/sprites/story/take-winter_snow_hit-v1.webp": {
+      "bytes": 1451158,
+      "sha256": "66ea2ed238a0894af15d282fb770c6b14278774c010a49663f8c8f1b1e02632d"
+    },
+    "game/assets/sprites/afeng-dream-v2.webp": {
+      "bytes": 1074738,
+      "sha256": "372bc1d88e38e60634ec5da450bf25cdf01303f93135f46021fda40b6e605e8f"
+    },
+    "game/assets/sprites/ame-calm-review20261003-v2.webp": {
+      "bytes": 1307914,
+      "sha256": "e3cc830bd322649245f6e950a45e327de7a812b1054bf715ae93d8eedb78911d"
+    },
+    "game/assets/sprites/boatman-complain-v2.webp": {
+      "bytes": 1474066,
+      "sha256": "25a9ca1a7aca01c288dc8b111cd2c36ac30d6b851a8b7245122ca054e1ba75f3"
+    },
+    "game/assets/sprites/deyi-angry.webp": {
+      "bytes": 1048940,
+      "sha256": "7d6210524c3090286ad09786e1bb7f8284e054aa1ef600133f7e8b3347e6d352"
+    },
+    "game/assets/sprites/donglian-calm-v2.webp": {
+      "bytes": 912830,
+      "sha256": "ed254c66cd2d40d62b4dfaeebde14fb254e9d37473bf99c27247b7e8df12c827"
+    },
+    "game/assets/sprites/fengji-sad.webp": {
+      "bytes": 1137370,
+      "sha256": "d6dd753dccc7dc733245f323981c4b40da90f1a99da2f762efa4f6a9b468a60c"
+    },
+    "game/assets/sprites/ferryman-greet.webp": {
+      "bytes": 1226804,
+      "sha256": "6fa5706bd666afcc1b9480ca446b2ff9898583c7fe8e22c7c49b497f2fbf41b2"
+    },
+    "game/assets/sprites/fushimi-calm.webp": {
+      "bytes": 1046544,
+      "sha256": "359219854e8938ecf04078376f7990c77fc35caf7222785a489fd75320a5448b"
+    },
+    "game/assets/sprites/guide-wait-v2.webp": {
+      "bytes": 1240258,
+      "sha256": "8024d9528704d70bcff4a1cb36d77daeba8912e6f6eaab04f50891d777571b15"
+    },
+    "game/assets/sprites/hanbei-calm-v4.webp": {
+      "bytes": 171970,
+      "sha256": "969cc629136b374ba725f62abff709f1db4a00123efb681157e26b804135450e"
+    },
+    "game/assets/sprites/hanbei-old-v5.webp": {
+      "bytes": 1463456,
+      "sha256": "e1bf8ae150ffc9843725fe6c6c801ec02151b164a8e071b2129dec494414acbe"
+    },
+    "game/assets/sprites/ina-calm-review20261003-v1.webp": {
+      "bytes": 1400956,
+      "sha256": "a54cc39e25dacd65612ebc4b94528bbdf215870f582a57260ca0a9cbb37d1771"
+    },
+    "game/assets/sprites/kagetora-calm-v2.webp": {
+      "bytes": 1268158,
+      "sha256": "352d605b7cd5b41dd9d1a375ec8981d2f7a7ef5b4c9487b53694678ef974ff07"
+    },
+    "game/assets/sprites/kiyoshi-shy-v2.webp": {
+      "bytes": 743514,
+      "sha256": "924e940b176d65fa606184f03ffc95d741c14ab0a6525e39d07f6f202eaf9890"
+    },
+    "game/assets/sprites/nobuhira-train-v2.webp": {
+      "bytes": 1181612,
+      "sha256": "06cd3bb3e165c1ed308ff0d28ff3cd828688c1b2ff1f62cf7d340d440e222f84"
+    },
+    "game/assets/sprites/nobunaga-smile-v2.webp": {
+      "bytes": 1127910,
+      "sha256": "56a3078631a7d7f8974a32dd655b9958190999b22af1d61435825c9c4b89c659"
+    },
+    "game/assets/sprites/quansan-sad-v2.webp": {
+      "bytes": 1038806,
+      "sha256": "2761600bbefb24ee547ae7ffeb80461874bacb30516c9111f00a2696359b5f58"
+    },
+    "game/assets/sprites/shiguang-smile-v2.webp": {
+      "bytes": 1428084,
+      "sha256": "59b2146bc337b0ba52def52c00997686c5d070d7da280c560fe7bd7baa11037e"
+    },
+    "game/assets/sprites/shihe-calm.webp": {
+      "bytes": 1143886,
+      "sha256": "512cef8999f7946f14928aaca3549be819d9f87152fc9257b9e94d8d2b186fa6"
+    },
+    "game/assets/sprites/shilan-home-v2.webp": {
+      "bytes": 1131348,
+      "sha256": "9ec57f04a21cd680037c6de7dcc54ab638ba164e19ecceaeb7a7502ca705bec4"
+    },
+    "game/assets/sprites/shimayama-talk-v2.webp": {
+      "bytes": 1140376,
+      "sha256": "67a0133c82867313b70d02113be0f23cd96b06500176ab5b34cbe5d8fc618c2c"
+    },
+    "game/assets/sprites/shitai-calm.webp": {
+      "bytes": 1047458,
+      "sha256": "d4c2739715e110dff0ac68def59f0fc67e360a4996b818034e0a79678c948dcd"
+    },
+    "game/assets/sprites/shonagon-hood-v2.webp": {
+      "bytes": 1601948,
+      "sha256": "555a80c84ec58bf1d447afcb04a8367feee24d49d90175677d26e30823da89f3"
+    },
+    "game/assets/sprites/suwen-calm-v5.webp": {
+      "bytes": 1173712,
+      "sha256": "756811d432f051d8562bd169b7bd54e47357e08097031663f263773ea8c0fa23"
+    },
+    "game/assets/sprites/tachibana-hollow.webp": {
+      "bytes": 1042944,
+      "sha256": "355775c7cb586bf67dfa62d7b91a6c2b122b4f2838807f1e3390358f3518a3ae"
+    },
+    "game/assets/sprites/tachibana-young-v2.webp": {
+      "bytes": 1288848,
+      "sha256": "e7ba60595389696ca2a18d0a84daea5233d7f630edfb2efb47a40b8373a984ce"
+    },
+    "game/assets/sprites/take-calm-v8.webp": {
+      "bytes": 1099084,
+      "sha256": "0b7f7a921cd64019ad05a84eae3de5dde3cefeaa1e1f1e4a7f79c5188a0cc70d"
+    },
+    "game/assets/sprites/yousaburo-dream-v2.webp": {
+      "bytes": 988366,
+      "sha256": "2ede2f7cb479a6cb584eebed016c0717fe8ab107dae05cbad584f2ccf0fc5529"
+    },
+    "game/assets/sprites/zhanghe-warm.webp": {
+      "bytes": 1342518,
+      "sha256": "8708cf955b717da0e4788e036eb5f0b0ce7f29938e7361aaf40dcae3ebaa3772"
+    },
+    "game/assets/backgrounds/afterlife-sixfork-mountain-night-v1.webp": {
+      "bytes": 613434,
+      "sha256": "c500c166e87b59de5a25777218a58fe1ce86d9249e3e1d951e6ed61ec079a323"
+    },
+    "game/assets/backgrounds/afterlife.webp": {
+      "bytes": 412962,
+      "sha256": "d36079f880d4153bddda5e4b4af2ccd3087575fc9758953f1e906fe15f57aff5"
+    },
+    "game/assets/backgrounds/archery.webp": {
+      "bytes": 322642,
+      "sha256": "413d1cf4d715fad2f8e07dcf4943bc3578b83efa0d1ea9f3cceed7d717817bea"
+    },
+    "game/assets/backgrounds/cave.webp": {
+      "bytes": 319048,
+      "sha256": "5cde883d9bf15257b12a6fbbb1936213cc4b8d43ba73641e91749d847f132433"
+    },
+    "game/assets/backgrounds/dream.webp": {
+      "bytes": 250490,
+      "sha256": "54031ec1780b9487016fb7f5522a4a2e2e5952f15a80fb950abb6bdb88ec4bfc"
+    },
+    "game/assets/backgrounds/dreamlake-winter-lakeside-v2.webp": {
+      "bytes": 287972,
+      "sha256": "a9c7479da5760ad7dcad7f3fa58108e34143709f2a6f2a38bb69a1dc66d027e0"
+    },
+    "game/assets/backgrounds/family-hall-v1.webp": {
+      "bytes": 360210,
+      "sha256": "9117d451653584332db96523d1bec0b22580f9183aad75819d515edcacdbe79d"
+    },
+    "game/assets/backgrounds/hanbei-bedroom-v1.webp": {
+      "bytes": 257022,
+      "sha256": "ae6866aa2fbd08c76d8de16917b4925c33c5a7f9545ce1f33c86d4ae117bb169"
+    },
+    "game/assets/backgrounds/hanbei-dream-sand-v1.webp": {
+      "bytes": 229890,
+      "sha256": "327315dc077af646faf297e9c65c0d23e7f09b4fb88c8bd809842455ce5d047b"
+    },
+    "game/assets/backgrounds/hearth.webp": {
+      "bytes": 249764,
+      "sha256": "47a97ae0af8da59032dae7785f964a111234437329d28213171040c1bb6f6d46"
+    },
+    "game/assets/backgrounds/kyoto-castle-town-v1.webp": {
+      "bytes": 553460,
+      "sha256": "c15aa63314557d841d339c8e15d59205313fb7be4d9d2fc48d68460c6e201bdf"
+    },
+    "game/assets/backgrounds/luoyang-outskirts-rift-v1.webp": {
+      "bytes": 434690,
+      "sha256": "2af62bb54f9f1165cd2b0b3204dc91a22dd5d5b89c3947fe3c96f9c08c4b7fc4"
+    },
+    "game/assets/backgrounds/mountain.webp": {
+      "bytes": 348274,
+      "sha256": "4b136cb9a231e12e3daeb230961cea7870a2ecc5558e022eba2f023f7eb44634"
+    },
+    "game/assets/backgrounds/night.webp": {
+      "bytes": 290176,
+      "sha256": "49a1b73e3f1e1df80728f6c0188eacc584dd0b79e7a8cfb1d55222e8b2d94407"
+    },
+    "game/assets/backgrounds/oe-cave-fork-natural-v1.webp": {
+      "bytes": 383300,
+      "sha256": "dde174fc78980faa82157fa24f513cd09b422fb911b16fcd0a820a75568c1ecb"
+    },
+    "game/assets/backgrounds/rift.webp": {
+      "bytes": 307328,
+      "sha256": "1ad8614f257b21c148aef44e66f9553a5c231a69f90b408f2bce29e7f9e1e789"
+    },
+    "game/assets/backgrounds/river.webp": {
+      "bytes": 325580,
+      "sha256": "57a850854e316341cf786e37daabbe816729a10e24f9dc0b180be91cc8f6c537"
+    },
+    "game/assets/backgrounds/sanzu-starry-ferrybank-night-v1.webp": {
+      "bytes": 647862,
+      "sha256": "7d24a1b3a8fe496969ab06984b7d94a02cca86b614add7bf372d71d1f9911652"
+    },
+    "game/assets/backgrounds/shijia-snow-courtyard-v1.webp": {
+      "bytes": 368626,
+      "sha256": "0e5df2f6871c70299876ac52b21f251f19c74f31d0cdcbc252b9fdf0b25d225c"
+    },
+    "game/assets/backgrounds/snow.webp": {
+      "bytes": 373490,
+      "sha256": "7cd17ad3041e94028ce503cac0f64603e40d295d04280a0ef7dcc6142918c044"
+    },
+    "game/assets/backgrounds/swordyard.webp": {
+      "bytes": 399048,
+      "sha256": "d5f181119165d159b968e64ac2fe60e9676cf2c17c16827cddc888e780693d53"
+    },
+    "game/assets/backgrounds/yingchuan-room-morning-v1.webp": {
+      "bytes": 279144,
+      "sha256": "fc4a0e362631cf567eed197d994c93365aca213e018caf165869006ea27d65d9"
+    },
+    ".nojekyll": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "README.md": {
+      "bytes": 1087,
+      "sha256": "ca284e34af6ae50b9f08b6efc7d0b59e46ccd969787afb7b073011b2b88e8edc"
+    }
+  }
+}
