@@ -187,3 +187,47 @@
 @media(max-width:900px){.opening-layout{grid-template-columns:minmax(0,1fr);gap:22px}.opening-chronicle{min-height:0}}
 @media(max-width:700px){.chapter-opening::before{inset:12px}.chapter-opening::after{inset:18px}.opening-ornament{top:22px}.opening-review-edit{top:20px;right:7%;padding:5px 8px;font-size:10px}.opening-scroll{width:94vw;max-height:94svh;padding:54px 13px 22px}.opening-layout{gap:19px;min-height:0}.opening-scroll h2{font-size:38px;margin-bottom:17px}.opening-cast{gap:8px}.opening-cast[data-count="1"]{grid-template-columns:minmax(0,1fr)}.opening-person{grid-template-columns:60px minmax(0,1fr);min-height:105px}.opening-avatar{width:60px;height:105px}.opening-person h3{font-size:11px;margin:7px 7px 3px;letter-spacing:0}.opening-person p{font-size:9px;line-height:1.4;margin:0 7px 7px}.opening-chronicle{gap:7px;padding:15px 5px}.opening-year{font-size:20px}.opening-place{font-size:16px}.opening-eras{gap:3px 10px;font-size:12px}.opening-history{gap:2px;margin-top:3px;padding-top:9px;font-size:11px}.opening-navigation{gap:8px;margin-top:17px}.opening-navigation .opening-enter{min-width:0;padding:9px 12px;font-size:12px;letter-spacing:1px}.opening-navigation .opening-back{min-width:0}}
 @media(prefers-reduced-motion:reduce){.chapter-opening,.chapter-opening *{transition:none!important}}
+
+/* Fit phone artwork without cropping; rotating changes layout, not the story frame. */
+@media(max-width:1100px){
+  .reader{height:100svh;height:100dvh;min-height:0}
+  .story-cg:not(.floating){background:#000}
+  .story-cg img,.story-flash img{object-fit:contain}
+}
+/* Short landscape screens use the horizontal stage with a compact, scrollable dialogue. */
+@media(orientation:landscape) and (max-height:600px) and (max-width:1100px){
+  .reader-head{height:36px;margin:0 12px;font-size:10px;letter-spacing:0}
+  .reader-head>div{display:flex;gap:5px;min-width:0}
+  .reader-head #place{max-width:32vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .reader-head button{padding:6px 8px}
+  .scene-caption{top:12%;left:4%;max-width:36vw}
+  .scene-caption h2{font-size:20px;margin:4px 0}
+  .scene-caption>span{display:none}
+  .portrait-frame{inset:7% 1% auto;width:98%;height:88%}
+  .portrait-slot{width:46%}
+  .portrait-slot[data-position="left"]{left:0}
+  .portrait-slot[data-position="center"]{left:27%}
+  .portrait-slot[data-position="right"]{right:0}
+  .reading-area,.reader.terminal .reading-area{width:94%;min-height:0;padding:8px 20px 4px;border-radius:8px 8px 0 0}
+  .speaker-name{left:20px;top:-24px;min-width:96px;padding:4px 16px;font-size:12px}
+  #passage{min-height:0;max-height:24svh;max-height:24dvh;padding:7px 24px 0 0;line-height:1.4;overflow-y:auto;overscroll-behavior:contain}
+  .advance-row{height:16px}
+  #next{top:-7px;padding-bottom:0;font-size:15px}
+  .reader-tools{width:94%;justify-content:flex-end;gap:5px;padding:4px 8px;border-radius:0 0 8px 8px}
+  .reader-tools button{font-size:10px;padding:4px 9px;letter-spacing:0}
+  .opening-ornament{top:12px;font-size:11px}
+  .opening-scroll{width:94vw;max-height:94svh;max-height:94dvh;padding:34px 18px 16px}
+  .opening-layout{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:20px;min-height:0}
+  .opening-number{font-size:10px;margin-bottom:5px}
+  .opening-scroll h2{font-size:30px;margin-bottom:12px}
+  .opening-cast{gap:8px}
+  .opening-person{grid-template-columns:60px minmax(0,1fr);min-height:105px}
+  .opening-avatar{width:60px;height:105px}
+  .opening-person h3{font-size:11px;margin:7px 7px 3px;letter-spacing:0}
+  .opening-person p{font-size:10px;line-height:1.4;margin:0 7px 7px}
+  .opening-chronicle{min-height:0;gap:6px;padding:12px}
+  .opening-year{font-size:20px}.opening-place{font-size:16px}
+  .opening-eras{font-size:12px}.opening-history{font-size:11px;padding-top:8px}
+  .opening-navigation{margin-top:12px}
+  .opening-navigation .opening-enter{min-width:0;padding:8px 14px;font-size:12px;letter-spacing:1px}
+}

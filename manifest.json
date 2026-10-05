@@ -19,12 +19,12 @@
       "sha256": "6ffd94b1b9785761ff40ebaebe1379532fa613f9dddf7cf8803478cb5af2efed"
     },
     "index.html": {
-      "bytes": 6171,
-      "sha256": "31799d7c72b46144d7ebde637370183e6c17ed0c266749b156f498a49358537a"
+      "bytes": 6186,
+      "sha256": "5d363fca28edd05bb67653d9d8abf43c10729add92759426c0a064087c7efbf8"
     },
     "game/style.css": {
-      "bytes": 33506,
-      "sha256": "7bf5764e97cdc638441c05c9004a4b381000ed20e9557d126094d602c46f8da9"
+      "bytes": 36124,
+      "sha256": "75b44e64cd65a2503d241404e4297015d20428229ad7469e03795ce3f2452378"
     },
     "game/app.js": {
       "bytes": 66882,
