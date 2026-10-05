@@ -42,6 +42,8 @@
         valid = engine.move(valid, redirect.node, story, valid.node !== redirect.node);
         if (window.DREAMLAKE_TEST) valid.reviewFrameKey = redirect.key;
       } else if (window.DREAMLAKE_TEST && typeof raw.reviewFrameKey === 'string') valid.reviewFrameKey = raw.reviewFrameKey;
+      if (valid.node !== raw.node || valid.history.length !== raw.history.length
+          || valid.visited.length !== raw.visited.length || valid.endings.length !== raw.endings.length) write(name, valid);
       return valid;
     } catch (_) { return null; }
   }
@@ -817,7 +819,7 @@
   function home() { music?.stop(); stopAuto(); clearFrameEffect(); clearBlankFrame(); clearTimedFrame(); clearTimeout(visualFadeTimer); visualFadeTimer = null; pendingFadeNavigation = null; resetFrameFade(0); cancelFlash(); clearInterval(typeTimer); clearTimeout(openingTimer); openingVisible = false; openingClosing = false; document.body.classList.remove('chapter-title-active'); $('chapter-opening').hidden = true; $('chapter-opening').classList.remove('visible', 'closing'); typing=false; active = false; $('reader').hidden = true; $('home').hidden = false; $('continue').hidden = !saved; document.title = story.title+' · '+story.subtitle; if (window.DREAMLAKE_TEST) document.dispatchEvent(new Event('dreamlake:render')); }
   function closePanel() { $('panel').close(); advanceBlankFrame(); advanceTimedFrame(); schedule(); }
   function begin() {
-    if (saved && !confirm('重新入梦会替换自动存档。已收藏的结局会保留；需要时请先保存到手动存档。继续吗？')) return;
+    if (saved && !confirm('重新入梦会替换自动存档。需要时请先保存到手动存档。继续吗？')) return;
     openedChapters.clear(); state = engine.create(story); persist(); render();
   }
   function title(t) { $('panel-title').textContent = t; }
@@ -863,7 +865,7 @@
     for(const [name,label,min,max] of [['size','文字大小',18,30],['delay','自动播放间隔（秒）',2,12],['musicVolume','背景音乐音量（%）',0,100]]){const row=el('label',undefined,'setting'),caption=el('span',label+' · '+settings[name]),input=el('input');input.type='range';input.min=min;input.max=max;input.value=settings[name];input.setAttribute('aria-label',label);input.addEventListener('input',()=>{settings[name]=Number(input.value);caption.textContent=label+' · '+input.value;applySettings();});row.append(caption,input);body.append(row);}
     for(const [name,label] of [['sans','使用黑体'],['motion','逐字显示'],['sound','翻页音'],['music','背景音乐']]){const row=el('label',undefined,'setting'),input=el('input');input.type='checkbox';input.checked=settings[name];input.setAttribute('aria-label',label);input.addEventListener('change',()=>{settings[name]=input.checked;applySettings();if(name==='sound')sound();});row.append(el('span',label),input);body.append(row);}
   }
-  function aboutPanel(body) {title('关于此作');const text=el('div',undefined,'about');text.append(el('h3',story.subtitle),el('p',story.presentation?.credits || '','about-credits'));text.append(el('p','键盘：空格 / → 继续；← 回看；1 / 2 选择；S 存档；L 往事；Esc 关闭窗口。也可直接点击或触摸操作。'));body.append(text);}
+  function aboutPanel(body) {title('关于此作');const text=el('div',undefined,'about');text.append(el('h3',story.subtitle),el('p',story.presentation?.credits || '','about-credits'));text.append(el('p','键盘：空格 / → 继续；← 回看；'+(story.stats.choices?'1 / 2 选择；':'')+'S 存档；L 往事；Esc 关闭窗口。也可直接点击或触摸操作。'));body.append(text);}
   let audio;
   function sound(){if(!settings.sound)return;try{audio ||= new (window.AudioContext||window.webkitAudioContext)();audio.resume();const oscillator=audio.createOscillator(),gain=audio.createGain();oscillator.type='sine';oscillator.frequency.setValueAtTime(620,audio.currentTime);gain.gain.setValueAtTime(.025,audio.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.08);oscillator.connect(gain);gain.connect(audio.destination);oscillator.start();oscillator.stop(audio.currentTime+.08);}catch(_){}}
   $('start').onclick=begin;$('continue').onclick=()=>{state=saved;render();};$('to-home').onclick=home;$('ending-home').onclick=home;$('next').onclick=next;

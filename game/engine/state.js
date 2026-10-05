@@ -9,14 +9,17 @@
   }
   function validate(value, story) {
     const map = new Map(story.nodes.map(n => [n.id, n]));
-    if (!value || value.schema !== 1 || value.storyId !== story.id || value.storyVersion !== story.version || !map.has(value.node)) throw new Error('存档与当前故事版本不兼容。');
+    const redirect = id => typeof story.nodeRedirects?.[id] === 'string' && map.has(story.nodeRedirects[id]) ? story.nodeRedirects[id] : null;
+    const known = id => typeof id === 'string' && (map.has(id) || redirect(id) !== null);
+    if (!value || value.schema !== 1 || value.storyId !== story.id || value.storyVersion !== story.version || !known(value.node)) throw new Error('存档与当前故事版本不兼容。');
     for (const key of ['history', 'visited', 'endings']) {
-      if (!Array.isArray(value[key]) || value[key].length > 20000 || value[key].some(id => typeof id !== 'string' || !map.has(id))) throw new Error('存档数据不完整。');
+      if (!Array.isArray(value[key]) || value[key].length > 20000 || value[key].some(id => !known(id))) throw new Error('存档数据不完整。');
     }
-    if (value.endings.some(id => map.get(id).type !== 'ending')) throw new Error('结局记录无效。');
-    const beatCount = map.get(value.node).beats?.length || 1;
-    const beat = Number.isInteger(value.beat) ? Math.max(0,Math.min(value.beat,beatCount-1)) : 0;
-    return {schema: 1, storyId: story.id, storyVersion: story.version, node: value.node, beat, history: value.history.slice(), visited: [...new Set(value.visited)], endings: [...new Set(value.endings)], completed: value.completed === true, updated: Number.isFinite(value.updated) ? value.updated : Date.now()};
+    if (value.endings.some(id => map.get(id)?.type !== 'ending' && !story.retiredEndings?.includes(id))) throw new Error('结局记录无效。');
+    const node = map.has(value.node) ? value.node : redirect(value.node);
+    const beatCount = map.get(node).beats?.length || 1;
+    const beat = node === value.node && Number.isInteger(value.beat) ? Math.max(0,Math.min(value.beat,beatCount-1)) : 0;
+    return {schema: 1, storyId: story.id, storyVersion: story.version, node, beat, history: value.history.filter(id => map.has(id)), visited: [...new Set(value.visited.filter(id => map.has(id)))], endings: [...new Set(value.endings.filter(id => map.get(id)?.type === 'ending'))], completed: value.completed === true, updated: Number.isFinite(value.updated) ? value.updated : Date.now()};
   }
   function move(state, id, story, push = true) {
     const node = story.nodes.find(n => n.id === id);
