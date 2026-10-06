@@ -7,12 +7,12 @@
   "site": "https://donghan1789.github.io/heian-dream/",
   "files": {
     "LICENSE": {
-      "bytes": 2183,
-      "sha256": "e498960411f04b2ccbb9d6949c96e9a337914878cac6eae7ba2dacc7cce031bc"
+      "bytes": 2202,
+      "sha256": "5b7e1a79dc5ec10ab6938a36ed7f666b2391dece7b427358ab1491633d139499"
     },
     "COPYRIGHT.md": {
-      "bytes": 1112,
-      "sha256": "0c79f959ec87dd98d29f6370e9e833086da0578081addbfc1b7120948808faf5"
+      "bytes": 1124,
+      "sha256": "58d3a3a9b671038720ddaaed39ad4f3829e5a8b4c8b4517b92231c0576b1cd6d"
     },
     "THIRD_PARTY_NOTICES.md": {
       "bytes": 1547,
@@ -1859,8 +1859,8 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "README.md": {
-      "bytes": 1148,
-      "sha256": "fb27f33659e483908b63768b00b337da38f5b5d21edbf20db2601f6da9d996f3"
+      "bytes": 1397,
+      "sha256": "dafd9fbb91e6099bd33a20a19dea264231bcad7071285295df3ae4630c07b94e"
     }
   }
 }
