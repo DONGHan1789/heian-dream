@@ -20,31 +20,31 @@
     },
     "index.html": {
       "bytes": 6186,
-      "sha256": "5d363fca28edd05bb67653d9d8abf43c10729add92759426c0a064087c7efbf8"
+      "sha256": "2c23969188802d9c574182395630b1fe318f9e082c9cc0e4ea92303dddb1c122"
     },
     "game/style.css": {
-      "bytes": 36124,
-      "sha256": "75b44e64cd65a2503d241404e4297015d20428229ad7469e03795ce3f2452378"
+      "bytes": 37028,
+      "sha256": "e758e426d4cd51651b35e4cf4d5d4756505c0c0beadfec3537f0107c7c5f912f"
     },
     "game/app.js": {
-      "bytes": 66882,
-      "sha256": "9f73a8fb9b595d0591fc0f99564d65f6950502bd0a947da4813c0e18a151ce91"
+      "bytes": 67295,
+      "sha256": "e50ef65c683371ab11433aca8ca9f830177f7768a45e47f8264e0055725fe689"
     },
     "game/engine/state.js": {
       "bytes": 3689,
       "sha256": "cc5a9210b6611b2a97a7b8dff0b86e561ce0966542ac4f89dc2454748f1423da"
     },
     "game/engine/frame-order.js": {
-      "bytes": 4169,
-      "sha256": "dc151ae449f9b48ee9710bc66ff2507b9245cdbfda052981db07ed4020843ca8"
+      "bytes": 4320,
+      "sha256": "18cc38d48cde2581b3135444c6ef0f375636dcc67cc928c3faca627c17fa2cb6"
     },
     "game/engine/frame-effects.js": {
       "bytes": 3567,
       "sha256": "f2ef9331975bab1521e357f9592b6d2312b0ad3012ef8dc7693e0b075b98ba5a"
     },
     "game/content/story.js": {
-      "bytes": 535387,
-      "sha256": "e1980c7663fbaab7dff1ffb024d42c4c086cb96f8c3b406da16c299109799112"
+      "bytes": 536696,
+      "sha256": "f9d7e147bac7016be7e7d2f23997f54c1149248d0b2f9f838e1b2c809a2f9229"
     },
     "game/content/art-cues.js": {
       "bytes": 184459,

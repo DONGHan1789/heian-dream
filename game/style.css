@@ -231,3 +231,10 @@
   .opening-navigation{margin-top:12px}
   .opening-navigation .opening-enter{min-width:0;padding:8px 14px;font-size:12px;letter-spacing:1px}
 }
+
+/* The opening recap is a complete page, separate from the dialogue box. */
+.reader.recap-frame{background:#000}
+.reader.recap-frame :is(.scene,.scene-shade,.reader-head,.scene-caption,.portrait-frame,.story-cg,.reader-tools,.reading-meta,.speaker-name,.advance-row,.progress-track,.choices,.ending-actions){display:none}
+.reader.recap-frame .playback{inset:0;display:grid;place-items:center;padding:6svh 5vw;background:#000}
+.reader.recap-frame .reading-area{width:min(1120px,100%);max-width:none;min-height:0;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
+.reader.recap-frame #passage{min-height:0;max-height:none;margin:0;padding:0;overflow:visible;color:#fff;font-family:"Noto Serif CJK SC","Source Han Serif SC","Songti SC",serif;font-size:clamp(12px,2.6svh,24px);line-height:1.9;letter-spacing:.3px;text-align:center;white-space:pre-wrap}

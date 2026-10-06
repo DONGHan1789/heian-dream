@@ -634,7 +634,7 @@
       persist(); render(); sound();
     }
   }
-  function schedule() { stopAuto(); if (frameEffectPlaying || openingVisible || blankFrameKey !== null || timedWaiting || timedMode === 'auto' || (window.DREAMLAKE_TEST && window.DREAMLAKE_REVIEW_MODE && window.DREAMLAKE_REVIEW_MODE !== 'play')) return; if (autoMode && active && !typing && !$('panel').open && nodes.get(state.node).type === 'passage') autoTimer = setTimeout(next, Math.max(settings.delay * 1000, fullLine.length * 90)); }
+  function schedule() { stopAuto(); if (frameEffectPlaying || openingVisible || nodes.get(state.node)?.presentation === 'recap' || blankFrameKey !== null || timedWaiting || timedMode === 'auto' || (window.DREAMLAKE_TEST && window.DREAMLAKE_REVIEW_MODE && window.DREAMLAKE_REVIEW_MODE !== 'play')) return; if (autoMode && active && !typing && !$('panel').open && nodes.get(state.node).type === 'passage') autoTimer = setTimeout(next, Math.max(settings.delay * 1000, fullLine.length * 90)); }
   function finishLine() { clearInterval(typeTimer); typeTimer=null; typing=false; $('passage').textContent=fullLine; schedule(); }
   function playLine(text) {
     clearInterval(typeTimer); fullLine=text; $('passage').setAttribute('aria-label',text);
@@ -659,9 +659,11 @@
     const skipped = n.type === 'passage' && !n.beats[state.beat || 0]?._reviewKey && [...flashScenes.values()].find(scene => scene.node === n.id && scene.skipBeat === sourceIndex(n, state.beat || 0));
     if (skipped && !flashIsInteractive(skipped)) { const after = followingSourceIndex(n, skipped.skipBeat); state=after < 0 ? engine.advance(state,story) : {...state,beat:after,updated:Date.now()};persist();render();return; }
     const beat = n.type === 'passage' ? (n.beats || [{kind:'narration',text:n.text}])[state.beat || 0] : null;
+    const isRecap = n.presentation === 'recap';
     $('home').hidden = true; $('reader').hidden = false; active = true;
+    $('reader').classList.toggle('recap-frame', isRecap);
     if (n.id === ch.start && (state.beat || 0) === 0 && !openedChapters.has(ch.number)) showChapterOpening(ch);
-    music?.select(musicCue(), {title: openingVisible && !openingClosing});
+    music?.select(musicCue(), {title: isRecap || (openingVisible && !openingClosing)});
     const isBlankFrame = Number.isFinite(beat?.blankSeconds) && beat.blankSeconds >= 0;
     const effect = !isBlankFrame && n.type === 'passage' ? frameEffectConfig(n, state.beat || 0) : null;
     const fadeIn = !isBlankFrame ? fadeMilliseconds(frameTiming(n, state.beat || 0).fadeInSeconds) : 0;
@@ -737,6 +739,11 @@
     } else if (effect) {
       stopAuto(); clearInterval(typeTimer); typeTimer = null; typing = false; fullLine = '';
       $('passage').textContent = ''; $('passage').setAttribute('aria-label', '');
+    } else if (isRecap) {
+      stopAuto(); clearInterval(typeTimer); typeTimer = null; typing = false;
+      fullLine = beat?.text ?? n.text;
+      $('passage').textContent = fullLine;
+      $('passage').setAttribute('aria-label', fullLine);
     } else playLine(beat?.text ?? n.text);
     $('choices').replaceChildren();
     if (n.type === 'choice') {

@@ -10,6 +10,8 @@
     const map=new Map(story.nodes.map(n=>[n.id,n]));
     let node=groupId.startsWith('branch:')?story.nodes.find(n=>n._reviewBranchFor===groupId.slice(7))
       :map.get(story.chapters.find(c=>c.number===Number(groupId.slice(8)))?.start);
+    const opening=map.get(story.start);
+    if(!groupId.startsWith('branch:')&&opening?.presentation==='recap'&&group(opening)===groupId)node=opening;
     const result=[],seen=new Set();
     while(node&&!seen.has(node.id)&&group(node)===groupId){
       seen.add(node.id);
