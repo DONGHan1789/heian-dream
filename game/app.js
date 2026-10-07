@@ -638,6 +638,7 @@
   function finishLine() { clearInterval(typeTimer); typeTimer=null; typing=false; $('passage').textContent=fullLine; schedule(); }
   function playLine(text) {
     clearInterval(typeTimer); fullLine=text; $('passage').setAttribute('aria-label',text);
+    $('passage').scrollTop = 0;
     if (!text || !settings.motion || (window.DREAMLAKE_TEST && window.DREAMLAKE_REVIEW_MODE !== 'play') || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { typing=false; $('passage').textContent=text; schedule(); return; }
     let index=0; typing=true; $('passage').textContent='';
     typeTimer=setInterval(()=>{index=Math.min(text.length,index+2);$('passage').textContent=text.slice(0,index);if(index===text.length)finishLine();},24);

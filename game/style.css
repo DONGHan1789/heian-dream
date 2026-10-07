@@ -191,6 +191,8 @@
 /* Fit phone artwork without cropping; rotating changes layout, not the story frame. */
 @media(max-width:1100px){
   .reader{height:100svh;height:100dvh;min-height:0}
+  /* Reserve the text area while the typewriter clears and reveals each line. */
+  .reader:not(.blank-frame):not(.recap-frame) #passage{height:calc(3lh + 15px);overflow-y:auto;overscroll-behavior:contain}
   .story-cg:not(.floating){background:#000}
   .story-cg img,.story-flash img{object-fit:contain}
 }
@@ -211,6 +213,7 @@
   .reading-area,.reader.terminal .reading-area{width:94%;min-height:0;padding:8px 20px 4px;border-radius:8px 8px 0 0}
   .speaker-name{left:20px;top:-24px;min-width:96px;padding:4px 16px;font-size:12px}
   #passage{min-height:0;max-height:24svh;max-height:24dvh;padding:7px 24px 0 0;line-height:1.4;overflow-y:auto;overscroll-behavior:contain}
+  .reader:not(.blank-frame):not(.recap-frame) #passage{height:24svh;height:24dvh}
   .advance-row{height:16px}
   #next{top:-7px;padding-bottom:0;font-size:15px}
   .reader-tools{width:94%;justify-content:flex-end;gap:5px;padding:4px 8px;border-radius:0 0 8px 8px}
