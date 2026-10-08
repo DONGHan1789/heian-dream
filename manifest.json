@@ -19,8 +19,8 @@
       "sha256": "6ffd94b1b9785761ff40ebaebe1379532fa613f9dddf7cf8803478cb5af2efed"
     },
     "index.html": {
-      "bytes": 6899,
-      "sha256": "5b0d7a857e6404b5f176c07bfbe76d7b2059d6709e6fb748b23d451172ff97e2"
+      "bytes": 6875,
+      "sha256": "378d2c55e346cc16dde840f0326cd464133cd665596ad885ed28fd63d673dcbf"
     },
     "game/style.css": {
       "bytes": 38091,
@@ -1859,8 +1859,8 @@
       "sha256": "af8f28e89aec08851be80f95f8f3b37ba88c681a49e326222d76e524f317a9c3"
     },
     "game/preload.js": {
-      "bytes": 10129,
-      "sha256": "1c50245433c188d2958b190e433d43dab2155bd46d38c8fa4f731664da0f703e"
+      "bytes": 10135,
+      "sha256": "6a40c02e64ff562cbbec32f0bd4e04726cdf6d0e5971f43c73ab4890f86b2d64"
     },
     "game-worker.js": {
       "bytes": 3412,

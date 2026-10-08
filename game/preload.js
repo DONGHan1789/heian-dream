@@ -77,7 +77,7 @@
       }catch(e){
         run.partial.delete(asset.path);
         if(run.cancelled||e.name==='QuotaExceededError')throw e;
-        if(attempt===2)throw Error('网络暂时中断，已加载的资源会保留。点击继续加载即可接着准备。');
+        if(attempt===2)throw Error('网络暂时中断，已加载的资源会保留。点击继续加载即可恢复下载。');
         status.textContent='正在重试未加载完成的资源……';
         await new Promise(resolve=>setTimeout(resolve,500*(attempt+1)));
       }finally{clearTimeout(timer);controller.abort();run.controllers.delete(controller);}
@@ -93,7 +93,7 @@
       if(run.cancelled)return;
       const bytes=run.bytes+[...run.partial.values()].reduce((n,v)=>n+v,0);
       progress.value=Math.min(total,bytes);
-      status.textContent=`已准备 ${run.count} / ${missing.length} 项 · ${mb(bytes)} / ${mb(total)}`;
+      status.textContent=`已加载 ${run.count} / ${missing.length} 项 · ${mb(bytes)} / ${mb(total)}`;
     };
     let cursor=0;
     try{
@@ -107,7 +107,7 @@
       const cancelled=run.cancelled;run.cancelled=true;run.controllers.forEach(c=>c.abort());
       if(cancelled)return false;
       status.textContent=e.name==='QuotaExceededError'?'浏览器存储空间不足，请释放空间后继续加载。'
-        : /[\u4e00-\u9fff]/.test(e.message)?e.message:'缓存暂时未准备好，请继续加载。';
+        : /[\u4e00-\u9fff]/.test(e.message)?e.message:'资源缓存暂时不可用，请继续加载。';
       confirm.textContent='继续加载';confirm.disabled=false;cancel.textContent='暂不加载';return false;
     }
   }
@@ -143,7 +143,7 @@
           summary.textContent=`完整资源约 ${mb(total)}；本次预计下载 ${mb(bytes)}。`;
           status.textContent='包含全部立绘、CG、背景和音乐。资源会保存在当前浏览器，之后仅补加载缺失或更新的部分。';
           confirm.disabled=false;
-        }catch(e){if(!closed){status.textContent=/[\u4e00-\u9fff]/.test(e.message)?e.message:'缓存暂时未准备好，请重试。';confirm.textContent='重试';confirm.disabled=false;m=null;}}
+        }catch(e){if(!closed){status.textContent=/[\u4e00-\u9fff]/.test(e.message)?e.message:'资源缓存暂时不可用，请重试。';confirm.textContent='重试';confirm.disabled=false;m=null;}}
       };
       confirm.onclick=async()=>{if(closed||confirm.disabled)return;if(!m){confirm.disabled=true;await check();return;}if(await load(m))finish(true);};
       check();
