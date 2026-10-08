@@ -20,15 +20,15 @@
     },
     "index.html": {
       "bytes": 6875,
-      "sha256": "378d2c55e346cc16dde840f0326cd464133cd665596ad885ed28fd63d673dcbf"
+      "sha256": "c14025de4689990b2f7b221affa0993c2bc130ee83c0eeb3146c880c24009c89"
     },
     "game/style.css": {
       "bytes": 38091,
       "sha256": "9bf51cb8ca6caea13a47264cfa30e47e37164cd3b2c3496030539d58c78628e9"
     },
     "game/app.js": {
-      "bytes": 67914,
-      "sha256": "15c1900ae1cf1fac145d1c03d602822502e275fc7f546242ecfeaa7f402b608e"
+      "bytes": 70844,
+      "sha256": "5f214e09b9c8401e383150cdecccb592a2283fc1148867d8f7154a10178d2134"
     },
     "game/engine/state.js": {
       "bytes": 3689,
@@ -1855,8 +1855,8 @@
       "sha256": "fc4a0e362631cf567eed197d994c93365aca213e018caf165869006ea27d65d9"
     },
     "game/engine/asset-loader.js": {
-      "bytes": 2922,
-      "sha256": "af8f28e89aec08851be80f95f8f3b37ba88c681a49e326222d76e524f317a9c3"
+      "bytes": 3571,
+      "sha256": "0e56a0d7c150d98d65265234cd8df225899cec44e9fca54908e66a6746a5c2a5"
     },
     "game/preload.js": {
       "bytes": 10135,

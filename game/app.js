@@ -103,6 +103,7 @@
   $('reader').append(flashFrame);
   let artViews = [], lastRenderedBeat = null;
   let displayedCg = null, visualFadeTimer = null, pendingFadeNavigation = null, visualFadeGeneration = 0;
+  let framePreparing = false;
   let flashPlaying = false, flashGeneration = 0;
   let blankFrameKey = null, blankSeconds = null, blankTextSeconds = null, blankPhase = null, blankTimer = null, blankGeneration = 0;
   let timedFrameKey = null, timedMode = null, timedSeconds = null, timedTimer = null, timedWaiting = false, timedReady = false, timedReadyToAdvance = false, timedGeneration = 0;
@@ -126,10 +127,7 @@
       isCurrent: () => generation === visualFadeGeneration && active,
       onText: () => { frameEffectPlaying = false; playLine(text); }
     });
-    return frameEffect.finished.catch(() => {
-      if (generation !== visualFadeGeneration || !active) return;
-      clearFrameEffect(); frameFade.hidden = true; playLine(text);
-    });
+    return frameEffect.finished;
   }
   function clearBlankFrame() {
     clearTimeout(blankTimer); blankTimer = null;
@@ -175,7 +173,7 @@
     }, blankFadeMs());
   }
   function startBlankCountdown() {
-    if (blankPhase !== 'black' || blankTimer || openingVisible) return;
+    if (blankPhase !== 'black' || blankTimer || openingVisible || framePreparing) return;
     queueBlankStep(revealBlankText, blankSeconds * 1000);
   }
   function timingOverride(key) {
@@ -241,7 +239,7 @@
     next();
   }
   function startTimedCountdown() {
-    if (!timedWaiting || !timedReady || timedTimer || openingVisible) return;
+    if (!timedWaiting || !timedReady || timedTimer || openingVisible || framePreparing) return;
     const generation = timedGeneration;
     timedTimer = setTimeout(() => {
       timedTimer = null;
@@ -267,19 +265,23 @@
     $('reader').classList.toggle('timed-waiting', timedWaiting);
     $('reader').classList.toggle('timed-auto', timing.mode === 'auto');
     const generation = timedGeneration;
-    Promise.resolve(frameVisible).then(() => {
-      if (generation !== timedGeneration) return;
+    Promise.resolve(frameVisible).then(success => {
+      if (success === false || generation !== timedGeneration) return;
       timedReady = true; startTimedCountdown();
     });
   }
   let artGeneration = 0;
+  let failedArtGeneration = null;
   const imageCache = VNAssets.create();
   const artLoadError = el('div', undefined, 'art-load-error');
   artLoadError.hidden = true; artLoadError.setAttribute('role','status');
   artLoadError.append(el('p','画面暂时没有加载出来。已保留进度，可以重试。'),btn('重新加载画面',()=>render()));
   $('reader').append(artLoadError);
   function reportArtFailure(generation) {
-    if (generation === artGeneration && active) artLoadError.hidden = false;
+    if (generation === artGeneration && active) {
+      failedArtGeneration = generation;
+      artLoadError.hidden = false;
+    }
   }
   async function decodedPortrait(path, fallback, generation) {
     const image = await imageCache.load(path);
@@ -305,39 +307,53 @@
       const fallback = portraitPath(member.character, variant);
       const path = archived?.character === member.character ? archived.path
         : ['portrait', 'pose'].includes(custom?.format) && custom.character === member.character ? custom.path : fallback;
-      const loaded = (image.dataset.assetPath || image.getAttribute('src')) === path && image.complete && image.naturalWidth > 0
+      const loaded = image && (image.dataset.assetPath || image.getAttribute('src')) === path && image.complete && image.naturalWidth > 0
         ? image : await decodedPortrait(path, fallback, generation);
       return loaded ? {slot, image: loaded, transform, character, member, index} : null;
     }));
-    if (generation !== artGeneration) return;
-    // Keep the previous complete stage on screen while assets load, then commit
-    // every position together in one paint. This also rejects stale rapid edits.
-    slots.forEach(slot => {
-      const entry = prepared.find(item => item?.slot === slot);
-      slot.classList.remove('speaking', 'listening');
-      if (!entry) { slot.hidden = true; return; }
-      if (slot.querySelector('img') !== entry.image) slot.querySelector('img').replaceWith(entry.image);
-      entry.image.style.transform = entry.transform;
-      entry.image.alt = entry.character.name;
-      slot.style.zIndex = speaker === entry.member.character ? '3' : String(entry.index + 1);
-      const translucent = entry.member.solid === false
-        || (entry.member.solid !== true && speaker && speaker !== entry.member.character);
-      slot.classList.add(translucent ? 'listening' : 'speaking');
-      slot.hidden = false;
-    });
-    $('portrait-frame').hidden = prepared.every(item => !item);
-    cgFrame.hidden = true;
-    cgFrame.replaceChildren();
-    cgFrame.classList.remove('floating');
-    cgFrame.style.opacity = '';
-    displayedCg = null;
-    $('reader').classList.remove('showing-cg', 'floating-cg', 'solid-cg', 'cg-no-text', 'white-cg');
+    // Two positions may deliberately show the same asset. They need separate
+    // DOM nodes; otherwise appending the second steals the first one's image.
+    const usedImages = new Set();
+    for (const entry of prepared.filter(Boolean)) {
+      if (usedImages.has(entry.image)) {
+        entry.image = await imageCache.copy(entry.image);
+        if (!entry.image) { reportArtFailure(generation); return () => false; }
+      }
+      usedImages.add(entry.image);
+    }
+    return () => {
+      if (generation !== artGeneration) return false;
+      // Detach all destinations together before moving any image. Swapping
+      // positions must never leave a source slot without its placeholder.
+      prepared.filter(Boolean).forEach(entry => entry.image.remove());
+      slots.forEach(slot => {
+        const entry = prepared.find(item => item?.slot === slot);
+        slot.classList.remove('speaking', 'listening');
+        if (!entry) { slot.replaceChildren(el('img')); slot.hidden = true; return; }
+        slot.replaceChildren(entry.image);
+        entry.image.style.transform = entry.transform;
+        entry.image.alt = entry.character.name;
+        slot.style.zIndex = speaker === entry.member.character ? '3' : String(entry.index + 1);
+        const translucent = entry.member.solid === false
+          || (entry.member.solid !== true && speaker && speaker !== entry.member.character);
+        slot.classList.add(translucent ? 'listening' : 'speaking');
+        slot.hidden = false;
+      });
+      $('portrait-frame').hidden = prepared.every(item => !item);
+      cgFrame.hidden = true;
+      cgFrame.replaceChildren();
+      cgFrame.classList.remove('floating');
+      cgFrame.style.opacity = '';
+      displayedCg = null;
+      $('reader').classList.remove('showing-cg', 'floating-cg', 'solid-cg', 'cg-no-text', 'white-cg');
+      return true;
+    };
   }
-  function drawArtView() {
+  function drawArtView(deferCommit = false) {
     const generation = ++artGeneration;
     artLoadError.hidden = true;
     const baseView = artViews[0];
-    if (!baseView) return Promise.resolve();
+    if (!baseView) return Promise.resolve(deferCommit ? () => true : true);
     const reviewOverride = window.DREAMLAKE_TEST ? window.DreamlakeReview?.visualOverride?.() : null;
     const cgId = reviewOverride?.type === 'cg' ? reviewOverride.id
       : reviewOverride?.type === 'portrait' ? null : (lastRenderedBeat ? sceneAdjustments?.cgs?.[lastRenderedBeat] : null);
@@ -345,44 +361,50 @@
     const view = cgId && cgAsset?.format === 'cg' ? {...baseView, type: 'cg', id: cgId} : baseView;
     const adjusted = reviewOverride?.type === 'portrait' ? reviewOverride.slots
       : cgId ? null : (lastRenderedBeat ? sceneAdjustments?.beats?.[lastRenderedBeat] : null);
-    if (adjusted) {
-      return renderStage(Object.entries(adjusted).map(([position, member]) => ({...member, position})), view.speaker, {}, generation);
-    }
-    const showingCg = view.type === 'cg';
-    if (showingCg) {
-      const item = art?.images?.[view.id] || sceneAdjustments?.images?.[view.id] || solidCgs[view.id];
-      if (!item) return renderStage(view.stage, view.speaker, view.portraits, generation);
-      const solid = Boolean(solidCgs[view.id]);
-      const layout = reviewOverride?.type === 'cg' && reviewOverride.layout ? reviewOverride.layout
-        : (lastRenderedBeat && sceneAdjustments?.cgLayouts?.[lastRenderedBeat]) || view.layout || item.layout;
-      const timing = frameTiming(nodes.get(state.node), state.beat || 0);
-      return (solid ? Promise.resolve(el('div', undefined, 'solid-cg-canvas')) : imageCache.load(item.path)).then(image => {
-        if (generation !== artGeneration) return;
-        if (!image) {
-          reportArtFailure(generation);
-          return renderStage(view.stage, view.speaker, view.portraits, generation);
-        }
-        if (solid) image.style.background = item.color;
-        else {
-          image.draggable = false; image.alt = item.name;
-          image.className = layout === 'portrait' || (layout === 'landscape' && item.layout === 'portrait') ? 'portrait-cg' : '';
-        }
-        displayedCg = view.id;
-        cgFrame.replaceChildren(image);
-        cgFrame.classList.toggle('floating', layout === 'floating');
-        cgFrame.hidden = false;
-        $('portrait-frame').hidden = true;
-        $('reader').classList.toggle('showing-cg', layout !== 'floating');
-        $('reader').classList.toggle('floating-cg', layout === 'floating');
-        $('reader').classList.toggle('solid-cg', solid);
-        $('reader').classList.toggle('white-cg', view.id === 'solid:white');
-        $('reader').classList.toggle('cg-no-text', timing.showText === false);
-        cgFrame.style.transition = 'none';
-        cgFrame.style.opacity = '1';
-      });
-    } else {
-      return renderStage(view.stage, view.speaker, view.portraits, generation);
-    }
+    const prepare = () => {
+      if (adjusted) {
+        return renderStage(Object.entries(adjusted).map(([position, member]) => ({...member, position})), view.speaker, {}, generation);
+      }
+      const showingCg = view.type === 'cg';
+      if (showingCg) {
+        const item = art?.images?.[view.id] || sceneAdjustments?.images?.[view.id] || solidCgs[view.id];
+        if (!item) return renderStage(view.stage, view.speaker, view.portraits, generation);
+        const solid = Boolean(solidCgs[view.id]);
+        const layout = reviewOverride?.type === 'cg' && reviewOverride.layout ? reviewOverride.layout
+          : (lastRenderedBeat && sceneAdjustments?.cgLayouts?.[lastRenderedBeat]) || view.layout || item.layout;
+        const timing = frameTiming(nodes.get(state.node), state.beat || 0);
+        return (solid ? Promise.resolve(el('div', undefined, 'solid-cg-canvas')) : imageCache.load(item.path)).then(image => {
+          if (!image) {
+            reportArtFailure(generation);
+            return renderStage(view.stage, view.speaker, view.portraits, generation);
+          }
+          return () => {
+            if (generation !== artGeneration) return false;
+            if (solid) image.style.background = item.color;
+            else {
+              image.draggable = false; image.alt = item.name;
+              image.className = layout === 'portrait' || (layout === 'landscape' && item.layout === 'portrait') ? 'portrait-cg' : '';
+            }
+            displayedCg = view.id;
+            cgFrame.replaceChildren(image);
+            cgFrame.classList.toggle('floating', layout === 'floating');
+            cgFrame.hidden = false;
+            $('portrait-frame').hidden = true;
+            $('reader').classList.toggle('showing-cg', layout !== 'floating');
+            $('reader').classList.toggle('floating-cg', layout === 'floating');
+            $('reader').classList.toggle('solid-cg', solid);
+            $('reader').classList.toggle('white-cg', view.id === 'solid:white');
+            $('reader').classList.toggle('cg-no-text', timing.showText === false);
+            cgFrame.style.transition = 'none';
+            cgFrame.style.opacity = '1';
+            return true;
+          };
+        });
+      } else {
+        return renderStage(view.stage, view.speaker, view.portraits, generation);
+      }
+    };
+    return prepare().then(commit => deferCommit ? commit : commit?.());
   }
   function buildArtViews(node, stage, speaker, beatIndex) {
     const insertedVisual = node.beats?.[beatIndex]?._reviewVisual;
@@ -436,10 +458,10 @@
     if (!views.length) views.push({type: 'portrait', stage: base, speaker, portraits: {}});
     return views;
   }
-  function renderArt(node, beat, stage, speaker, beatIndex = state.beat || 0) {
+  function renderArt(node, beat, stage, speaker, beatIndex = state.beat || 0, deferCommit = false) {
     artViews = buildArtViews(node, stage, speaker, beatIndex);
     lastRenderedBeat = ['passage', 'complete'].includes(node.type) ? frameKey(node, beatIndex) : null;
-    return drawArtView();
+    return drawArtView(deferCommit);
   }
   function backgroundFor(node, beatIndex) {
     const chapter = story.chapters.find(item => item.number === node.chapter);
@@ -471,6 +493,7 @@
     const generation=artGeneration;
     return imageCache.load(`game/assets/backgrounds/${name}.webp`).then(image=>{
       if(!image)reportArtFailure(generation);
+      return image;
     });
   }
   function previousFrameContext() {
@@ -639,7 +662,7 @@
       persist(); render(); sound();
     }
   }
-  function schedule() { stopAuto(); if (frameEffectPlaying || openingVisible || nodes.get(state.node)?.presentation === 'recap' || blankFrameKey !== null || timedWaiting || timedMode === 'auto' || (window.DREAMLAKE_TEST && window.DREAMLAKE_REVIEW_MODE && window.DREAMLAKE_REVIEW_MODE !== 'play')) return; if (autoMode && active && !typing && !$('panel').open && nodes.get(state.node).type === 'passage') autoTimer = setTimeout(next, Math.max(settings.delay * 1000, fullLine.length * 90)); }
+  function schedule() { stopAuto(); if ($('reader').dataset.framePreparing || frameEffectPlaying || openingVisible || nodes.get(state.node)?.presentation === 'recap' || blankFrameKey !== null || timedWaiting || timedMode === 'auto' || (window.DREAMLAKE_TEST && window.DREAMLAKE_REVIEW_MODE && window.DREAMLAKE_REVIEW_MODE !== 'play')) return; if (autoMode && active && !typing && !$('panel').open && nodes.get(state.node).type === 'passage') autoTimer = setTimeout(next, Math.max(settings.delay * 1000, fullLine.length * 90)); }
   function finishLine() { clearInterval(typeTimer); typeTimer=null; typing=false; $('passage').textContent=fullLine; schedule(); }
   function playLine(text) {
     clearInterval(typeTimer); fullLine=text; $('passage').setAttribute('aria-label',text);
@@ -649,7 +672,11 @@
     typeTimer=setInterval(()=>{index=Math.min(text.length,index+2);$('passage').textContent=text.slice(0,index);if(index===text.length)finishLine();},24);
   }
   function render() {
+    stopAuto(); clearInterval(typeTimer); typeTimer = null; typing = false;
     clearFrameEffect();
+    framePreparing = true;
+    $('reader').dataset.framePreparing = 'loading';
+    $('reader').setAttribute('aria-busy', 'true');
     const n = nodes.get(state.node), ch = story.chapters.find(c => c.number === n.chapter), terminal = ['ending', 'complete'].includes(n.type);
     clearTimeout(visualFadeTimer); visualFadeTimer = null; pendingFadeNavigation = null;
     if (n.type === 'choice' && n._reviewRemoved) {
@@ -692,15 +719,9 @@
     $('reader').dataset.lineKind=beat?.kind || n.type;
     $('scene').dataset.theme = n.theme;
     const background = (window.DREAMLAKE_TEST && window.DreamlakeReview?.backgroundOverride?.()) || backgroundFor(n, state.beat || 0);
-    drawBackground(background);
     const metadata = frameMetadata(n, frameKey(n, state.beat || 0));
-    $('chapter-label').textContent = '第' + ch.label + '章 · ' + ch.title;
-    $('place').textContent = metadata.place;
-    $('scene-number').textContent = '卷 ' + String(ch.number).padStart(2, '0') + ' / ' + story.chapters.length;
-    $('scene-title').textContent = ch.title;
-    $('scene-tag').textContent = ({hearth:'灯火可亲 · 故人如昨',snow:'雪落人间 · 梦未醒',mountain:'山口有风 · 归路何处',river:'一水之间 · 相思千年',dream:'似梦非梦 · 此生何求',cave:'无明之中 · 万象皆空',rift:'天地有隙 · 梦亦有终',night:'星河无声 · 故人入梦'})[n.theme] || '';
     const stage = terminal ? [] : beat?.stage || n.stage || (n.character ? [{character:n.character,variant:n.variant}] : []);
-    let artReady = Promise.resolve();
+    let artReady = Promise.resolve(() => true);
     if (n.type === 'choice' && previousPassageForChoice.has(n.id)) {
       let previous = previousPassageForChoice.get(n.id);
       if (!previous.beats?.length) previous = story.nodes.slice(0, story.nodes.indexOf(n)).reverse().find(item => item.type === 'passage' && item.chapter === n.chapter && item.beats?.length);
@@ -708,58 +729,93 @@
         const previousBeatIndex = previous.beats.length - 1;
         const previousBeat = previous.beats[previousBeatIndex];
         if (lastRenderedBeat !== frameKey(previous, previousBeatIndex) || !artViews.length) {
-          artReady = renderArt(previous, previousBeat, previousBeat.stage || previous.stage || [], previousBeat.kind === 'dialogue' ? previousBeat.speaker : null, previousBeatIndex);
+          artReady = renderArt(previous, previousBeat, previousBeat.stage || previous.stage || [], previousBeat.kind === 'dialogue' ? previousBeat.speaker : null, previousBeatIndex, true);
         }
-      } else artReady = renderArt(n, null, stage, null, 0);
+      } else artReady = renderArt(n, null, stage, null, 0, true);
       if (sceneAdjustments?.beats?.[`${n.id}#0`] || sceneAdjustments?.cgs?.[`${n.id}#0`]) {
         lastRenderedBeat = `${n.id}#0`;
-        artReady = drawArtView();
+        artReady = drawArtView(true);
       }
     } else {
-      artReady = renderArt(n, beat, stage, beat?.kind === 'dialogue' ? beat.speaker : null);
+      artReady = renderArt(n, beat, stage, beat?.kind === 'dialogue' ? beat.speaker : null, state.beat || 0, true);
     }
-    const frameReady = fadeIn || effect ? Promise.all([artReady, loadBackground(background)]) : artReady;
-    const frameVisible = effect ? playFrameEffect(effect, frameReady, fadeGeneration, beat.text)
-      : revealFrameAfterArt(fadeIn, frameReady, fadeGeneration);
+    const frameReady = Promise.all([artReady, loadBackground(background)]).then(([commitArt]) => {
+      if (fadeGeneration !== visualFadeGeneration || !active) return false;
+      if (failedArtGeneration === artGeneration) throw Error('Frame assets unavailable');
+      if (commitArt?.() === false) return false;
+      // Assets and text become visible in the same paint, including cuts with
+      // no fade. Cached bytes still need decoding before an image is usable.
+      $('reader').dataset.framePreparing = 'revealing';
+      commitFrameContents();
+      // Manual frames remain immediately clickable once their assets have
+      // committed. Authored holds and effects enforce their own navigation.
+      framePreparing = false;
+      return true;
+    });
+    const frameVisible = (effect ? playFrameEffect(effect, frameReady, fadeGeneration, beat.text)
+      : revealFrameAfterArt(fadeIn, frameReady, fadeGeneration)).then(() => {
+      if (fadeGeneration !== visualFadeGeneration || !active) return false;
+      framePreparing = false;
+      delete $('reader').dataset.framePreparing;
+      $('reader').removeAttribute('aria-busy');
+      startBlankCountdown(); startTimedCountdown(); schedule();
+      return true;
+    }).catch(() => {
+      if (fadeGeneration !== visualFadeGeneration || !active) return false;
+      clearFrameEffect();
+      frameFade.style.transition = 'none'; frameFade.style.opacity = '0'; frameFade.hidden = true;
+      $('reader').dataset.framePreparing = 'error';
+      $('reader').removeAttribute('aria-busy');
+      reportArtFailure(artGeneration);
+      return false;
+    });
     if (n.type === 'passage' && !isBlankFrame) prepareTimedFrame(n, state.beat || 0, frameVisible);
     else clearTimedFrame();
-    $('speaker-name').hidden=beat?.kind!=='dialogue';
-    $('speaker-name').textContent=beat?.kind==='dialogue' ? (beat.speakerLabel || story.characters[beat.speaker]?.name || '？？？') : '';
-    $('node-label').textContent = n.type === 'passage' ? metadata.place : n.title || metadata.place;
-    $('year-label').textContent = metadata.year;
-    const index = positions.get(n.id) ?? positions.get(n.retryTo) ?? 0;
-    const fraction=n.type==='passage'?(state.beat||0)/(n.beats?.length||1):0;
-    $('progress-label').textContent = `第${ch.label}章`;
-    $('progress-bar').style.width = ((index + fraction + 1) / route.length * 100) + '%';
-    if (isBlankFrame) {
-      stopAuto(); clearInterval(typeTimer); typeTimer = null; typing = false;
-      if (blankPhase === 'black') {
-        fullLine = '';
+    function commitFrameContents() {
+      drawBackground(background);
+      $('chapter-label').textContent = '第' + ch.label + '章 · ' + ch.title;
+      $('place').textContent = metadata.place;
+      $('scene-number').textContent = '卷 ' + String(ch.number).padStart(2, '0') + ' / ' + story.chapters.length;
+      $('scene-title').textContent = ch.title;
+      $('scene-tag').textContent = ({hearth:'灯火可亲 · 故人如昨',snow:'雪落人间 · 梦未醒',mountain:'山口有风 · 归路何处',river:'一水之间 · 相思千年',dream:'似梦非梦 · 此生何求',cave:'无明之中 · 万象皆空',rift:'天地有隙 · 梦亦有终',night:'星河无声 · 故人入梦'})[n.theme] || '';
+      $('speaker-name').hidden=beat?.kind!=='dialogue';
+      $('speaker-name').textContent=beat?.kind==='dialogue' ? (beat.speakerLabel || story.characters[beat.speaker]?.name || '？？？') : '';
+      $('node-label').textContent = n.type === 'passage' ? metadata.place : n.title || metadata.place;
+      $('year-label').textContent = metadata.year;
+      const index = positions.get(n.id) ?? positions.get(n.retryTo) ?? 0;
+      const fraction=n.type==='passage'?(state.beat||0)/(n.beats?.length||1):0;
+      $('progress-label').textContent = `第${ch.label}章`;
+      $('progress-bar').style.width = ((index + fraction + 1) / route.length * 100) + '%';
+      if (isBlankFrame) {
+        stopAuto(); clearInterval(typeTimer); typeTimer = null; typing = false;
+        if (blankPhase === 'black') {
+          fullLine = '';
+          $('passage').textContent = ''; $('passage').setAttribute('aria-label', '');
+          startBlankCountdown();
+        } else {
+          fullLine = beat?.text || '';
+          $('passage').textContent = fullLine;
+          $('passage').setAttribute('aria-label', fullLine);
+        }
+      } else if (effect) {
+        stopAuto(); clearInterval(typeTimer); typeTimer = null; typing = false; fullLine = '';
         $('passage').textContent = ''; $('passage').setAttribute('aria-label', '');
-        startBlankCountdown();
-      } else {
-        fullLine = beat?.text || '';
+      } else if (isRecap) {
+        stopAuto(); clearInterval(typeTimer); typeTimer = null; typing = false;
+        fullLine = beat?.text ?? n.text;
         $('passage').textContent = fullLine;
         $('passage').setAttribute('aria-label', fullLine);
+      } else playLine(beat?.text ?? n.text);
+      $('choices').replaceChildren();
+      if (n.type === 'choice') {
+        n.options.forEach((option, i) => { const b = btn('', () => chooseOption(i), 'choice'); b.append(el('small', String(i + 1).padStart(2, '0')), el('span', option.text)); $('choices').append(b); });
       }
-    } else if (effect) {
-      stopAuto(); clearInterval(typeTimer); typeTimer = null; typing = false; fullLine = '';
-      $('passage').textContent = ''; $('passage').setAttribute('aria-label', '');
-    } else if (isRecap) {
-      stopAuto(); clearInterval(typeTimer); typeTimer = null; typing = false;
-      fullLine = beat?.text ?? n.text;
-      $('passage').textContent = fullLine;
-      $('passage').setAttribute('aria-label', fullLine);
-    } else playLine(beat?.text ?? n.text);
-    $('choices').replaceChildren();
-    if (n.type === 'choice') {
-      n.options.forEach((option, i) => { const b = btn('', () => chooseOption(i), 'choice'); b.append(el('small', String(i + 1).padStart(2, '0')), el('span', option.text)); $('choices').append(b); });
+      $('advance-row').hidden = n.type !== 'passage'; $('ending-actions').hidden = !terminal; $('retry').hidden = n.type !== 'ending';
+      $('back').disabled = !state.history.length && !(state.beat>0) && !(n.id === ch.start && (state.beat || 0) === 0); $('auto').disabled = terminal;
+      document.title = `${ch.title} · ${story.title}`;
+      schedule();
+      if (window.DREAMLAKE_TEST) document.dispatchEvent(new Event('dreamlake:render'));
     }
-    $('advance-row').hidden = n.type !== 'passage'; $('ending-actions').hidden = !terminal; $('retry').hidden = n.type !== 'ending';
-    $('back').disabled = !state.history.length && !(state.beat>0) && !(n.id === ch.start && (state.beat || 0) === 0); $('auto').disabled = terminal;
-    document.title = `${ch.title} · ${story.title}`;
-    schedule();
-    if (window.DREAMLAKE_TEST) document.dispatchEvent(new Event('dreamlake:render'));
   }
   function startFrameFadeOut(afterFade) {
     const fadeOut = fadeMilliseconds(frameTiming(nodes.get(state.node), state.beat || 0).fadeOutSeconds);
@@ -781,12 +837,12 @@
     return false;
   }
   function chooseOption(index, afterVisualFade = false) {
-    if (!active || openingVisible || flashPlaying || $('panel').open || visualFadeTimer || nodes.get(state.node).type !== 'choice') return;
+    if (!active || framePreparing || openingVisible || flashPlaying || $('panel').open || visualFadeTimer || nodes.get(state.node).type !== 'choice') return;
     if (!afterVisualFade && startFrameFadeOut(() => chooseOption(index, true))) return;
     state = engine.choose(state, index, story); persist(); render(); sound();
   }
   function next(fromBlank = false, afterVisualFade = false) {
-    if (!active || openingVisible || flashPlaying || frameEffectPlaying || (blankFrameKey !== null && blankPhase !== 'editing' && fromBlank !== true) || timedWaiting || $('panel').open || nodes.get(state.node).type !== 'passage' || visualFadeTimer) return;
+    if (!active || framePreparing || openingVisible || flashPlaying || frameEffectPlaying || (blankFrameKey !== null && blankPhase !== 'editing' && fromBlank !== true) || timedWaiting || $('panel').open || nodes.get(state.node).type !== 'passage' || visualFadeTimer) return;
     if (typing) { finishLine(); return; }
     const n = nodes.get(state.node), beatIndex = state.beat || 0;
     if (!afterVisualFade && startFrameFadeOut(() => next(false, true))) return;
@@ -829,7 +885,7 @@
     }
     persist(); render();
   }
-  function home() { artGeneration++; artLoadError.hidden=true; music?.stop(); stopAuto(); clearFrameEffect(); clearBlankFrame(); clearTimedFrame(); clearTimeout(visualFadeTimer); visualFadeTimer = null; pendingFadeNavigation = null; resetFrameFade(0); cancelFlash(); clearInterval(typeTimer); clearTimeout(openingTimer); openingVisible = false; openingClosing = false; document.body.classList.remove('chapter-title-active'); $('chapter-opening').hidden = true; $('chapter-opening').classList.remove('visible', 'closing'); typing=false; active = false; $('reader').hidden = true; $('home').hidden = false; $('continue').hidden = !saved; document.title = story.title+' · '+story.subtitle; if (window.DREAMLAKE_TEST) document.dispatchEvent(new Event('dreamlake:render')); }
+  function home() { framePreparing=false; delete $('reader').dataset.framePreparing; $('reader').removeAttribute('aria-busy'); artGeneration++; artLoadError.hidden=true; music?.stop(); stopAuto(); clearFrameEffect(); clearBlankFrame(); clearTimedFrame(); clearTimeout(visualFadeTimer); visualFadeTimer = null; pendingFadeNavigation = null; resetFrameFade(0); cancelFlash(); clearInterval(typeTimer); clearTimeout(openingTimer); openingVisible = false; openingClosing = false; document.body.classList.remove('chapter-title-active'); $('chapter-opening').hidden = true; $('chapter-opening').classList.remove('visible', 'closing'); typing=false; active = false; $('reader').hidden = true; $('home').hidden = false; $('continue').hidden = !saved; document.title = story.title+' · '+story.subtitle; if (window.DREAMLAKE_TEST) document.dispatchEvent(new Event('dreamlake:render')); }
   function closePanel() { $('panel').close(); advanceBlankFrame(); advanceTimedFrame(); schedule(); }
   function begin() {
     if (saved && !confirm('重新入梦会替换自动存档。需要时请先保存到手动存档。继续吗？')) return;

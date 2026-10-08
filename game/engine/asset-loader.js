@@ -6,6 +6,7 @@
   function create(options={}){
     const makeImage=options.makeImage||(()=>new Image());
     const timeoutMs=options.timeoutMs??12000,retries=options.retries??1;
+    const decodeFallbackMs=options.decodeFallbackMs??1000;
     const maxBytes=options.maxBytes??48*1024*1024,maxEntries=options.maxEntries??12;
     const cache=new Map(),failed=new Set();let bytes=0,serial=0;
     function trim(){
@@ -18,18 +19,22 @@
     }
     function attempt(path,retry){
       return new Promise(resolve=>{
-        const image=makeImage();let done=false;
+        const image=makeImage();let done=false,loaded=false,decodeTimer;
         const finish=success=>{
-          if(done)return;done=true;clearTimeout(timer);
+          if(done)return;done=true;clearTimeout(timer);clearTimeout(decodeTimer);
           image.onload=null;image.onerror=null;
           if(!success)image.removeAttribute('src');
           resolve(success?image:null);
         };
-        const timer=setTimeout(()=>finish(false),timeoutMs);
+        const timer=setTimeout(()=>finish(loaded&&image.naturalWidth>0),timeoutMs);
         image.decoding='async';image.fetchPriority='high';
         image.onload=()=>{
-          // onload is sufficient when a browser's decode promise hangs.
-          if(image.naturalWidth>0)finish(true);
+          if(!image.naturalWidth)return;
+          loaded=true;
+          // Prefer decode completion over the network load event. Retain a
+          // bounded fallback for browsers whose decode promise never settles.
+          if(typeof image.decode!=='function')finish(true);
+          else decodeTimer=setTimeout(()=>finish(true),decodeFallbackMs);
         };
         image.onerror=()=>finish(false);
         const source=retry?path+(path.includes('?')?'&':'?')+'__dreamlake_retry='+Date.now()+'-'+(++serial):path;
@@ -61,7 +66,15 @@
       })();
       return entry.promise;
     }
-    return {load,stats:()=>({entries:cache.size,decodedBytes:bytes})};
+    async function copy(source){
+      const path=source.dataset.assetPath||source.src;
+      for(let retry=0;retry<=retries;retry++){
+        const image=await attempt(path,retry>0);
+        if(image){image.dataset.assetPath=path;return image;}
+      }
+      return null;
+    }
+    return {load,copy,stats:()=>({entries:cache.size,decodedBytes:bytes})};
   }
   return {create};
 });
