@@ -19,16 +19,16 @@
       "sha256": "6ffd94b1b9785761ff40ebaebe1379532fa613f9dddf7cf8803478cb5af2efed"
     },
     "index.html": {
-      "bytes": 6210,
-      "sha256": "1616937c246704e4b49f4f3807a0229caa99f53b7bc58b3d17d77792d638fc18"
+      "bytes": 6899,
+      "sha256": "5b0d7a857e6404b5f176c07bfbe76d7b2059d6709e6fb748b23d451172ff97e2"
     },
     "game/style.css": {
-      "bytes": 37315,
-      "sha256": "612cebb1242d8ea4facdc5c07d849ff8cf04a8231efec6f68b32f326190543c0"
+      "bytes": 38091,
+      "sha256": "9bf51cb8ca6caea13a47264cfa30e47e37164cd3b2c3496030539d58c78628e9"
     },
     "game/app.js": {
-      "bytes": 67327,
-      "sha256": "d9f6220ad187f93fc697c0238a0ef864edb2a5795c2d2fe01dc31582f48746b8"
+      "bytes": 67914,
+      "sha256": "15c1900ae1cf1fac145d1c03d602822502e275fc7f546242ecfeaa7f402b608e"
     },
     "game/engine/state.js": {
       "bytes": 3689,
@@ -1853,6 +1853,22 @@
     "game/assets/backgrounds/yingchuan-room-morning-v1.webp": {
       "bytes": 279144,
       "sha256": "fc4a0e362631cf567eed197d994c93365aca213e018caf165869006ea27d65d9"
+    },
+    "game/engine/asset-loader.js": {
+      "bytes": 2922,
+      "sha256": "af8f28e89aec08851be80f95f8f3b37ba88c681a49e326222d76e524f317a9c3"
+    },
+    "game/preload.js": {
+      "bytes": 10129,
+      "sha256": "1c50245433c188d2958b190e433d43dab2155bd46d38c8fa4f731664da0f703e"
+    },
+    "game-worker.js": {
+      "bytes": 3412,
+      "sha256": "3fd4268b788f3cb7b39c5607b397c2767671370bc6e4293bd1bca52104bef3ca"
+    },
+    "game/content/asset-manifest.json": {
+      "bytes": 70255,
+      "sha256": "44c7175be9201a07c8fc26a7410247fc61491504c2391230a6c3b1cc6cf52c19"
     },
     ".nojekyll": {
       "bytes": 0,

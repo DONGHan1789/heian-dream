@@ -273,11 +273,19 @@
     });
   }
   let artGeneration = 0;
-  async function decodedPortrait(path, fallback) {
-    const image = new Image();
-    image.src = path;
-    try { await image.decode(); return image; }
-    catch (_) { return path === fallback ? null : decodedPortrait(fallback, fallback); }
+  const imageCache = VNAssets.create();
+  const artLoadError = el('div', undefined, 'art-load-error');
+  artLoadError.hidden = true; artLoadError.setAttribute('role','status');
+  artLoadError.append(el('p','画面暂时没有加载出来。已保留进度，可以重试。'),btn('重新加载画面',()=>render()));
+  $('reader').append(artLoadError);
+  function reportArtFailure(generation) {
+    if (generation === artGeneration && active) artLoadError.hidden = false;
+  }
+  async function decodedPortrait(path, fallback, generation) {
+    const image = await imageCache.load(path);
+    if (image) return image;
+    reportArtFailure(generation);
+    return path === fallback ? null : imageCache.load(fallback);
   }
   async function renderStage(stage, speaker, portraits = {}, generation = ++artGeneration) {
     const slots = [...document.querySelectorAll('.portrait-slot')];
@@ -297,8 +305,8 @@
       const fallback = portraitPath(member.character, variant);
       const path = archived?.character === member.character ? archived.path
         : ['portrait', 'pose'].includes(custom?.format) && custom.character === member.character ? custom.path : fallback;
-      const loaded = image.getAttribute('src') === path && image.complete && image.naturalWidth > 0
-        ? image : await decodedPortrait(path, fallback);
+      const loaded = (image.dataset.assetPath || image.getAttribute('src')) === path && image.complete && image.naturalWidth > 0
+        ? image : await decodedPortrait(path, fallback, generation);
       return loaded ? {slot, image: loaded, transform, character, member, index} : null;
     }));
     if (generation !== artGeneration) return;
@@ -327,6 +335,7 @@
   }
   function drawArtView() {
     const generation = ++artGeneration;
+    artLoadError.hidden = true;
     const baseView = artViews[0];
     if (!baseView) return Promise.resolve();
     const reviewOverride = window.DREAMLAKE_TEST ? window.DreamlakeReview?.visualOverride?.() : null;
@@ -344,17 +353,21 @@
       const item = art?.images?.[view.id] || sceneAdjustments?.images?.[view.id] || solidCgs[view.id];
       if (!item) return renderStage(view.stage, view.speaker, view.portraits, generation);
       const solid = Boolean(solidCgs[view.id]);
-      const image = solid ? el('div', undefined, 'solid-cg-canvas') : el('img');
-      if (solid) image.style.background = item.color;
-      else { image.draggable = false; image.alt = item.name; image.src = item.path; }
       const layout = reviewOverride?.type === 'cg' && reviewOverride.layout ? reviewOverride.layout
         : (lastRenderedBeat && sceneAdjustments?.cgLayouts?.[lastRenderedBeat]) || view.layout || item.layout;
-      if (!solid) image.className = layout === 'portrait' || (layout === 'landscape' && item.layout === 'portrait') ? 'portrait-cg' : '';
-      displayedCg = view.id;
       const timing = frameTiming(nodes.get(state.node), state.beat || 0);
-      $('reader').classList.toggle('cg-no-text', timing.showText === false);
-      return (solid ? Promise.resolve() : image.decode()).then(() => {
+      return (solid ? Promise.resolve(el('div', undefined, 'solid-cg-canvas')) : imageCache.load(item.path)).then(image => {
         if (generation !== artGeneration) return;
+        if (!image) {
+          reportArtFailure(generation);
+          return renderStage(view.stage, view.speaker, view.portraits, generation);
+        }
+        if (solid) image.style.background = item.color;
+        else {
+          image.draggable = false; image.alt = item.name;
+          image.className = layout === 'portrait' || (layout === 'landscape' && item.layout === 'portrait') ? 'portrait-cg' : '';
+        }
+        displayedCg = view.id;
         cgFrame.replaceChildren(image);
         cgFrame.classList.toggle('floating', layout === 'floating');
         cgFrame.hidden = false;
@@ -366,7 +379,7 @@
         $('reader').classList.toggle('cg-no-text', timing.showText === false);
         cgFrame.style.transition = 'none';
         cgFrame.style.opacity = '1';
-      }).catch(() => renderStage(view.stage, view.speaker, view.portraits, generation));
+      });
     } else {
       return renderStage(view.stage, view.speaker, view.portraits, generation);
     }
@@ -453,15 +466,12 @@
       scene.style.backgroundImage = `url("game/assets/backgrounds/${name}.webp")`;
     }
   }
-  const backgroundLoads = new Map();
   function loadBackground(name) {
     if (!name || !/^[a-z0-9-]+$/.test(name)) return Promise.resolve();
-    if (!backgroundLoads.has(name)) {
-      const image = new Image();
-      image.src = `game/assets/backgrounds/${name}.webp`;
-      backgroundLoads.set(name, image.decode().catch(() => {}));
-    }
-    return backgroundLoads.get(name);
+    const generation=artGeneration;
+    return imageCache.load(`game/assets/backgrounds/${name}.webp`).then(image=>{
+      if(!image)reportArtFailure(generation);
+    });
   }
   function previousFrameContext() {
     if (!active) return null;
@@ -606,15 +616,10 @@
     flashPlaying = true;
     stopAuto();
     const generation = ++flashGeneration;
-    const image = el('img');
     const asset = art?.images?.[scene.image];
-    let loaded = false;
-    if (asset) {
-      image.src = asset.path;
-      try { await image.decode(); loaded = true; } catch (_) { /* Continue the story if the optional CG is unavailable. */ }
-    }
+    const image = asset ? await imageCache.load(asset.path) : null;
     if (generation !== flashGeneration) return;
-    if (loaded) {
+    if (image) {
       flashFrame.replaceChildren(image);
       flashFrame.style.setProperty('--flash-fade', `${scene.fadeMs || 600}ms`);
       flashFrame.hidden = false;
@@ -824,11 +829,18 @@
     }
     persist(); render();
   }
-  function home() { music?.stop(); stopAuto(); clearFrameEffect(); clearBlankFrame(); clearTimedFrame(); clearTimeout(visualFadeTimer); visualFadeTimer = null; pendingFadeNavigation = null; resetFrameFade(0); cancelFlash(); clearInterval(typeTimer); clearTimeout(openingTimer); openingVisible = false; openingClosing = false; document.body.classList.remove('chapter-title-active'); $('chapter-opening').hidden = true; $('chapter-opening').classList.remove('visible', 'closing'); typing=false; active = false; $('reader').hidden = true; $('home').hidden = false; $('continue').hidden = !saved; document.title = story.title+' · '+story.subtitle; if (window.DREAMLAKE_TEST) document.dispatchEvent(new Event('dreamlake:render')); }
+  function home() { artGeneration++; artLoadError.hidden=true; music?.stop(); stopAuto(); clearFrameEffect(); clearBlankFrame(); clearTimedFrame(); clearTimeout(visualFadeTimer); visualFadeTimer = null; pendingFadeNavigation = null; resetFrameFade(0); cancelFlash(); clearInterval(typeTimer); clearTimeout(openingTimer); openingVisible = false; openingClosing = false; document.body.classList.remove('chapter-title-active'); $('chapter-opening').hidden = true; $('chapter-opening').classList.remove('visible', 'closing'); typing=false; active = false; $('reader').hidden = true; $('home').hidden = false; $('continue').hidden = !saved; document.title = story.title+' · '+story.subtitle; if (window.DREAMLAKE_TEST) document.dispatchEvent(new Event('dreamlake:render')); }
   function closePanel() { $('panel').close(); advanceBlankFrame(); advanceTimedFrame(); schedule(); }
   function begin() {
     if (saved && !confirm('重新入梦会替换自动存档。需要时请先保存到手动存档。继续吗？')) return;
-    openedChapters.clear(); state = engine.create(story); persist(); render();
+    enterGame(()=>{openedChapters.clear(); state = engine.create(story); persist(); render();});
+  }
+  let preparingGame = false;
+  async function enterGame(action) {
+    if(preparingGame)return;
+    preparingGame=true;
+    try { if(!window.DreamlakeResources || await DreamlakeResources.ensure()) action(); }
+    finally { preparingGame=false; }
   }
   function title(t) { $('panel-title').textContent = t; }
   function openPanel(kind) {
@@ -840,7 +852,7 @@
   function chaptersPanel(body) {
     title('卷目');
     const grid = el('div', undefined, 'chapter-grid');
-    story.chapters.forEach(ch => { const unlocked = ch.number === 1 || archive.completed || archive.visited.some(id => nodes.get(id)?.chapter === ch.number); const b = btn('', () => { state = engine.move(saved || state, ch.start, story); openedChapters.delete(ch.number); persist(); closePanel(); render(); }, 'chapter-card'); b.disabled = !unlocked; b.append(el('small', String(ch.number).padStart(2, '0'))); const detail = el('div'); detail.append(el('strong', unlocked ? ch.title : '尚未抵达'), el('span', unlocked ? ch.place : '第' + ch.label + '章')); b.append(detail); grid.append(b); }); body.append(grid);
+    story.chapters.forEach(ch => { const unlocked = ch.number === 1 || archive.completed || archive.visited.some(id => nodes.get(id)?.chapter === ch.number); const b = btn('', () => enterGame(() => { state = engine.move(saved || state, ch.start, story); openedChapters.delete(ch.number); persist(); closePanel(); render(); }), 'chapter-card'); b.disabled = !unlocked; b.append(el('small', String(ch.number).padStart(2, '0'))); const detail = el('div'); detail.append(el('strong', unlocked ? ch.title : '尚未抵达'), el('span', unlocked ? ch.place : '第' + ch.label + '章')); b.append(detail); grid.append(b); }); body.append(grid);
   }
   function endingsPanel(body) {
     const removed = window.DREAMLAKE_TEST ? removedEndingIds() : new Set();
@@ -876,7 +888,7 @@
   function aboutPanel(body) {title('关于此作');const text=el('div',undefined,'about');text.append(el('h3',story.subtitle),el('p',story.presentation?.credits || '','about-credits'));text.append(el('p','键盘：空格 / → 继续；← 回看；'+(story.stats.choices?'1 / 2 选择；':'')+'S 存档；L 往事；Esc 关闭窗口。也可直接点击或触摸操作。'));body.append(text);}
   let audio;
   function sound(){if(!settings.sound)return;try{audio ||= new (window.AudioContext||window.webkitAudioContext)();audio.resume();const oscillator=audio.createOscillator(),gain=audio.createGain();oscillator.type='sine';oscillator.frequency.setValueAtTime(620,audio.currentTime);gain.gain.setValueAtTime(.025,audio.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.08);oscillator.connect(gain);gain.connect(audio.destination);oscillator.start();oscillator.stop(audio.currentTime+.08);}catch(_){}}
-  $('start').onclick=begin;$('continue').onclick=()=>{state=saved;render();};$('to-home').onclick=home;$('ending-home').onclick=home;$('next').onclick=next;
+  $('start').onclick=begin;$('continue').onclick=()=>enterGame(()=>{state=saved;render();});$('to-home').onclick=home;$('ending-home').onclick=home;$('next').onclick=next;
   $('opening-enter').onclick=dismissChapterOpening;
   $('opening-back').onclick=previous;
   $('chapter-opening').addEventListener('click', e => e.stopPropagation());
